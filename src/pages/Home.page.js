@@ -3,6 +3,7 @@ import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Slide from '../components/slider/Slide';
 import Slider from '../components/slider/Slider';
+import WeeklySale from '../components/wrapper/WeeklySale'
 
 const Home = () => {
   useScript(
@@ -46,6 +47,7 @@ const Home = () => {
           <div className="slider-shield-main"></div>
         </div>
       </div>
+      <WeeklySale />
     </div>
   );
 };

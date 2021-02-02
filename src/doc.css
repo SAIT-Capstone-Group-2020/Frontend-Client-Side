@@ -4599,7 +4599,7 @@ figcaption {
   margin-left: auto;
   border-radius: 8px;
   background-color: transparent;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('./images/hha-logo.jpg'); */
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
