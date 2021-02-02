@@ -32,9 +32,6 @@ const Navbar = () => {
             <a href="/about" className="nav-item w-nav-link">
               About
             </a>
-            <a href="/login" className="nav-item w-nav-link">
-              Login
-            </a>
           </nav>
           <div className="w-commerce-commercecartwrapper cart">
             <button className="w-commerce-commercecartopenlink button cc-cart nav-btn w-inline-block">

@@ -3931,7 +3931,7 @@ figcaption {
 .slide {
   width: 100%;
   padding-right: 0px;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('./images/hha-logo.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3944,7 +3944,7 @@ figcaption {
 .slide-2 {
   width: 100%;
   padding-right: 0px;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('./images/hha-logo.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
