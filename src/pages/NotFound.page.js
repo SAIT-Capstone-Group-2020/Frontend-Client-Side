@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
+import Slide from '../components/slider/Slide'
 
 const NotFound = () => {
   useScript(
@@ -25,9 +26,9 @@ const NotFound = () => {
           >
             <div className="slider-content main-slide-wrap"></div>
             <div className="slider-wrap featured-wrap w-slider-mask">
-              <div className="slide w-slide" style={{"backgroundImage": `url(${"https://images.unsplash.com/photo-1534723452862-4c874018d66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"})`}}></div>
-              <div className="slide w-slide" style={{"backgroundImage": `url(${"https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80"})`}}></div>
-              <div className="slide w-slide" style={{"backgroundImage": `url(${"https://images.unsplash.com/photo-1516594798947-e65505dbb29d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80"})`}}></div>
+              <Slide styleName="slide w-slide" image="https://images.unsplash.com/photo-1534723452862-4c874018d66d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" />
+              <Slide styleName="slide w-slide" image="https://images.unsplash.com/photo-1545601445-4d6a0a0565f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80" />
+              <Slide styleName="slide w-slide" image="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1950&q=80" />
             </div>
             <div className="left-arrow w-slider-arrow-left">
               <div className="w-icon-slider-left"></div>
