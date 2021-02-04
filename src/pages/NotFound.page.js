@@ -3,9 +3,8 @@ import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Slide from '../components/slider/Slide';
 import Slider from '../components/slider/Slider';
-import WeeklySale from '../components/wrapper/WeeklySale'
 
-const Home = () => {
+const NotFound = () => {
   useScript(
     'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff4fd881cc2cd35ee68ff88',
   );
@@ -15,20 +14,10 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="section cc-store-home-wrap">
-        <div className="banners-without-event">
-          <Slider styleName="image-slider w-slider">
-            <div className="slider-content main-slide-wrap">
-              <h1 className="slider-header slider-main-header">
-                hiep hoa asian food market
-              </h1>
-              <h2 className="slider-header slider-h2">
-                This is the max characters. asdjnfkas dfnasdlkfja sdfj asldf
-                alksjd flkajsd flkaj dlkfja sdlkfj asdjf alksdj falksjd flaksdj
-                falsdkjf aslkdjf asdfalsdkjf asdlfkajsd fsaljd flaskdjf
-                sa,dslafms dklfansjfsd
-              </h2>
-            </div>
+      <div className="section cc-not-found-page">
+        <div className="_404-banner">
+          <Slider styleName="image-slider _404-slider w-slider">
+            <div className="slider-content main-slide-wrap"></div>
             <div className="slider-wrap featured-wrap w-slider-mask">
               <Slide
                 styleName="slide w-slide"
@@ -44,12 +33,22 @@ const Home = () => {
               />
             </div>
           </Slider>
-          <div className="slider-shield-main"></div>
+          <div className="slider-shield-main _404-slider-shield">
+            <h1 className="slider-header">page not found</h1>
+            <h2 className="slider-header _404-sub-head">
+              Sorry! The page you&#x27;re looking for does not exist.
+            </h2>
+            <a
+              href="/"
+              className="button cc-white-button _404-slider-btn w-button"
+            >
+              Return home
+            </a>
+          </div>
         </div>
       </div>
-      <WeeklySale />
     </div>
   );
 };
 
-export default Home;
+export default NotFound;
