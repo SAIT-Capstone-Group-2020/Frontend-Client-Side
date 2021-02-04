@@ -5,6 +5,7 @@ import Products from './pages/Products.page';
 import NotFound from './pages/NotFound.page'
 
 import './doc.css';
+import './kim.css';
 
 function App() {
   return (
