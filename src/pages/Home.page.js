@@ -4,6 +4,7 @@ import useScript from '../utils/useScript.hook';
 import Slide from '../components/slider/Slide';
 import Slider from '../components/slider/Slider';
 import WeeklySale from '../components/wrapper/WeeklySale'
+import Footer from '../components/hoc/Footer';
 
 const Home = () => {
   useScript(
@@ -48,6 +49,7 @@ const Home = () => {
         </div>
       </div>
       <WeeklySale />
+      <Footer />
     </div>
   );
 };
