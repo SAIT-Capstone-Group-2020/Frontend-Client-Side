@@ -21,20 +21,20 @@ const Products = () => {
     <div>
       <Navbar />
       <ProductsHeader />
-      <div class="section cc-product-list-section">
+      <div class="product-list-section cc-product-list-section">
         <CategorySidebar />
-      </div>
-      <div class="product-list-elements-wrapper">
-        <SortDropdown />
-        <div class="product-list-wrapper">
-          <div class="product-list-wrap">
-            <ProductThumbnail />    
-            <ProductThumbnail />  
-            <ProductThumbnail />  
-            <ProductThumbnail />  
-            <ProductThumbnail />  
-          </div>
-        </div>  
+        <div class="product-list-elements-wrapper">
+          <SortDropdown />
+          <div class="product-list-wrapper">
+            <div class="product-list-wrap">
+              <ProductThumbnail />    
+              <ProductThumbnail />  
+              <ProductThumbnail />  
+              <ProductThumbnail />  
+              <ProductThumbnail />  
+            </div>
+          </div>  
+        </div>
       </div>
       <Footer />
     </div>
