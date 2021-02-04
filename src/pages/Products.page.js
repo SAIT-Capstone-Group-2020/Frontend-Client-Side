@@ -3,6 +3,7 @@ import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
 import ProductsHeader from '../components/products/ProductsHeader';
 import CategorySidebar from '../components/products/CategorySidebar';
+import SortDropdown from '../components/products/SortDropdown';
 import Footer from '../components/hoc/Footer';
 
 const Products = () => {
@@ -21,6 +22,9 @@ const Products = () => {
       <ProductsHeader />
       <div class="section cc-product-list-section">
         <CategorySidebar />
+      </div>
+      <div class="product-list-elements-wrapper">
+        <SortDropdown />
       </div>
       <Footer />
     </div>
