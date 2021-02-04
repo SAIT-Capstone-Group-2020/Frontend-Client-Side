@@ -2,6 +2,7 @@ import React from 'react';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
 import ProductsHeader from '../components/products/ProductsHeader';
+import CategorySidebar from '../components/products/CategorySidebar';
 import Footer from '../components/hoc/Footer';
 
 const Products = () => {
@@ -18,6 +19,9 @@ const Products = () => {
     <div>
       <Navbar />
       <ProductsHeader />
+      <div class="section cc-product-list-section">
+        <CategorySidebar />
+      </div>
       <Footer />
     </div>
   );
