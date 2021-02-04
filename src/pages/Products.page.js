@@ -1,6 +1,7 @@
 import React from 'react';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
+import ProductsHeader from '../components/wrapper/ProductsHeader';
 import Footer from '../components/hoc/Footer';
 
 const Products = () => {
@@ -16,6 +17,7 @@ const Products = () => {
   return (
     <div>
       <Navbar />
+      <ProductsHeader />
       <Footer />
     </div>
   );
