@@ -16,7 +16,7 @@ const SortDropdown = () => {
             </nav>
           </div>
         </div>
-    </div>
+      </div>
   );
 };
 

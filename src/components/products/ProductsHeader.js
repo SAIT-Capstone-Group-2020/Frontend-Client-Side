@@ -2,8 +2,8 @@ import React from 'react';
 
 const ProductsHeader = () => {
   return (
-    <div className="section cc-product-list-heading-section">
-    <div className="container cc-heading-wrap">
+    <div className="product-list-header-section cc-product-list-heading-section">
+    <div className="product-list-header-container cc-heading-wrap">
       <h1 className="product-list-heading-1">Explore Our Products!</h1>
       <div className="store-product-search-bar-wrap">
         <form action="/search" className="product-search-bar-wrapper w-form"><input type="search" className="search-bar-input-field w-input" maxlength="256" name="query" placeholder="Search for any product ..." id="search" required=""/><input type="submit" value="Search" className="search-button w-button"/></form>

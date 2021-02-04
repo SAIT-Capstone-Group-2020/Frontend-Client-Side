@@ -4,6 +4,7 @@ import Navbar from '../components/hoc/Navbar';
 import ProductsHeader from '../components/products/ProductsHeader';
 import CategorySidebar from '../components/products/CategorySidebar';
 import SortDropdown from '../components/products/SortDropdown';
+import ProductThumbnail from '../components/products/ProductThumbnail';
 import Footer from '../components/hoc/Footer';
 
 const Products = () => {
@@ -25,6 +26,15 @@ const Products = () => {
       </div>
       <div class="product-list-elements-wrapper">
         <SortDropdown />
+        <div class="product-list-wrapper">
+          <div class="product-list-wrap">
+            <ProductThumbnail />    
+            <ProductThumbnail />  
+            <ProductThumbnail />  
+            <ProductThumbnail />  
+            <ProductThumbnail />  
+          </div>
+        </div>  
       </div>
       <Footer />
     </div>
