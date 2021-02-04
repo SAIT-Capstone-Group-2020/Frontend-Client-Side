@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
-import Slide from '../components/slider/Slide';
-import Slider from '../components/slider/Slider';
+import Slide from '../components/index/Slide';
+import Slider from '../components/index/Slider';
 
 const NotFound = () => {
   useScript(

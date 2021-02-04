@@ -1,7 +1,7 @@
 import React from 'react';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
-import ProductsHeader from '../components/wrapper/ProductsHeader';
+import ProductsHeader from '../components/products/ProductsHeader';
 import Footer from '../components/hoc/Footer';
 
 const Products = () => {
