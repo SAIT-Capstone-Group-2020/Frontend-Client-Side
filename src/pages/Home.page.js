@@ -1,9 +1,10 @@
 import React from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
-import Slide from '../components/slider/Slide';
-import Slider from '../components/slider/Slider';
-import WeeklySale from '../components/wrapper/WeeklySale'
+import Slide from '../components/index/Slide';
+import Slider from '../components/index/Slider';
+import WeeklySale from '../components/index/WeeklySale'
+import Footer from '../components/hoc/Footer';
 
 const Home = () => {
   useScript(
@@ -48,6 +49,7 @@ const Home = () => {
         </div>
       </div>
       <WeeklySale />
+      <Footer />
     </div>
   );
 };
