@@ -33,7 +33,7 @@
   appearance: none;
 }
 
-.w-commerce-commercecartopenlinkcount {
+/* .w-commerce-commercecartopenlinkcount {
   display: inline-block;
   height: 18px;
   min-width: 18px;
@@ -50,7 +50,7 @@
   line-height: 18px;
   font-weight: 700;
   text-align: center;
-}
+} */
 
 .w-commerce-commercecartcontainerwrapper {
   position: fixed;
@@ -3148,7 +3148,7 @@ figcaption {
   margin-bottom: 10px;
 }
 
-.nav-item {
+/* .nav-item {
   padding-top: 9px;
   padding-bottom: 9px;
   opacity: 0.6;
@@ -3181,7 +3181,7 @@ figcaption {
 .nav-item.w--current:active {
   opacity: 0.7;
   color: #32343a;
-}
+} */
 
 .icon {
   display: block;
