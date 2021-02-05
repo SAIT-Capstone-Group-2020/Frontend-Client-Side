@@ -14,6 +14,9 @@ const Products = () => {
   useScript(
     'https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js',
   );
+  useScript(
+    'https://res.cloudinary.com/hntzzmpn9/raw/upload/v1612562182/hha/webflow_slud7c.js',
+  );
   return (
     <div>
       <Navbar />
