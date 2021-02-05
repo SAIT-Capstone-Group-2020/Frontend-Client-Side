@@ -6,7 +6,9 @@ const Footer = () => {
     <div className="footer-container">
       <div className="w-layout-grid footer">
         <div className="footer-div">
-          <a href="#" className="nav-logo-link w-inline-block"><img src="images/Screen-Shot-2021-01-14-at-4.58.21-AM.png" width="100" height="100" sizes="(max-width: 479px) 100vw, 100px" srcset="images/Screen-Shot-2021-01-14-at-4.58.21-AM-p-500.png 500w, images/Screen-Shot-2021-01-14-at-4.58.21-AM-p-800.png 800w, images/Screen-Shot-2021-01-14-at-4.58.21-AM.png 802w" alt="" className="logo-footer"/></a>
+          <a href="#" className="nav-logo-link w-inline-block">
+          <div style={{"width": "100px","height": "100px"}}></div>
+          </a>
         </div>
         <div className="footer-div">
           <div className="label cc-footer-label">our company</div>
