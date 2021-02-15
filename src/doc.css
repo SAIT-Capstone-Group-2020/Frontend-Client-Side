@@ -4267,7 +4267,7 @@ figcaption {
 .order-summary-wrapper {
   position: -webkit-sticky;
   position: sticky;
-  top: 10px;
+  top: 100px;
   bottom: auto;
   margin-top: 161px;
   -webkit-box-flex: 0;
