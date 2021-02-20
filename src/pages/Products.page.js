@@ -28,10 +28,6 @@ const Products = () => {
           <div class="product-list-wrapper">
             <div class="product-list-wrap">
               <ProductThumbnail />    
-              <ProductThumbnail />  
-              <ProductThumbnail />  
-              <ProductThumbnail />  
-              <ProductThumbnail />  
             </div>
           </div>  
         </div>

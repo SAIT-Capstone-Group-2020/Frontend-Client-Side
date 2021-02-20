@@ -8,7 +8,6 @@ import CheckoutSummary from './pages/CheckoutSummary.page';
 import './doc.css';
 import './kim.css';
 
-
 function App() {
   return (
     <Switch>
