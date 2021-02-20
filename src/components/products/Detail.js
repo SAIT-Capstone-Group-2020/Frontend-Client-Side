@@ -11,7 +11,7 @@ const Detail = () => {
       </div>
       <div className="divider cc-dark-divider"></div>
       <div className="product-info">
-        <ul role="list" className="list w-list-unstyled">
+        <ul className="list w-list-unstyled">
           <li className="list-item">
             <div className="paragraph-light">Category</div>
             <div className="product-detail-measurement">
