@@ -12,7 +12,7 @@ const WeeklySale = () => {
           </h1>
         </div>
       </div>
-      <div className="weekly-sale-img" style={{"backgroundImage": `url(${"https://mysait-my.sharepoint.com/personal/michael_doctor_edu_sait_ca/Documents/Microsoft%20Teams%20Chat%20Files/Screen%20Shot%202021-01-24%20at%201.27.14%20PM.png"})`}}></div>
+      <div className="weekly-sale-img" style={{"backgroundImage": `url(${"https://res.cloudinary.com/hsse18xji/image/upload/v1613944107/HHA/images/Screen_Shot_2021-01-24_at_1.27.14_PM_dbircl.png"})`}}></div>
     </div>
   );
 };
