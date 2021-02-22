@@ -23,12 +23,12 @@ class ProductThumbnail extends Component {
 							return (
 								<div class="product">
 									<a href="#" class="product-thumbnail-link w-inline-block">
-										<div class="product-thumbnail-image" />
+										<div class="product-thumbnail-image" style={{"backgroundImage": `url(${productDetail.image_url})`}}/>
 										<div class="cc-product-desc cc-product-desc-name">
 											<div class="product-name-text">{productDetail.product_name}</div>
 										</div>
 										<div class="cc-product-desc cc-product-desc-price">
-											<div class="product-price-text">${productDetail.sales_price}</div>
+											<div class="product-price-text">${productDetail.discount_price}</div>
 										</div>
 									</a>
 									<a href="#" class="product-thumbnail-button-link w-inline-block">
