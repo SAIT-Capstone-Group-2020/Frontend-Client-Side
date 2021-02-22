@@ -25,7 +25,7 @@ const ProductsHeader = ({ searchHandler }) => {
     <div className="product-list-header-container cc-heading-wrap">
       <h1 className="product-list-heading-1">Explore Our Products!</h1>
       <div className="store-product-search-bar-wrap">
-        <form className="product-search-bar-wrapper w-form"><input onChange={handleSearchInputChange} type="text" className="search-bar-input-field w-input" maxlength="100" name="query" placeholder="Search for any product ..." required=""/><input type="submit" value="Search" className="search-button w-button"/></form>
+        <form className="product-search-bar-wrapper w-form"><input onChange={handleSearchInputChange} type="text" className="search-bar-input-field w-input" maxlength="100" name="query" placeholder="Search for any product ..." required=""/><input type="hidden" value="Search" className="search-button w-button"/></form>
       </div>
       <div className="store-heading-categories-wrap cc-heading-category">
         <div className="category-link-list-wrapper cc-heading-category">
