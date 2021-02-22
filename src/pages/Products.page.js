@@ -179,7 +179,37 @@ function Products() {
 					<SortDropdown />
 					<div class="product-list-wrapper">
 						<div class="product-list-wrap">
-						
+							{(searchValue === '' ? products : updateProducts).map((product) => (
+								<div class="product" key={product.product_name}>
+									<a href="#" class="product-thumbnail-link w-inline-block">
+										<div
+											class="product-thumbnail-image"
+											style={{ backgroundImage: `url(${product.image_url})` }}
+										/>
+										<div class="cc-product-desc cc-product-desc-name">
+											<div class="product-name-text">{product.product_name}</div>
+										</div>
+										<div class="cc-product-desc cc-product-desc-price">
+											<div class="product-price-text">${product.discount_price}</div>
+										</div>
+									</a>
+									<a href="#" class="product-thumbnail-button-link w-inline-block">
+										<h6 class="product-thumbnail-button-text">in store only</h6>
+									</a>
+								</div>
+							))}
+
+							{/* {loading && !errorMessage ? (
+         <span>loading...</span>
+         ) : errorMessage ? (
+          <div>{errorMessage}</div>
+        ) : (
+          products.map((product, index) => (
+			  <ProductThumbnail key={`${index}-${product.product_name}`}product={product}/>
+			
+          ))
+        )}
+							 */}
 						</div>
 					</div>
 				</div>
