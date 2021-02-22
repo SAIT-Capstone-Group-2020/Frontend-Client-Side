@@ -8,7 +8,7 @@ const CategorySidebar = () => {
         <div className="category-link-list-wrap cc-category-list">
           <div className="divider cc-product-category-divider"></div>
           <div className="category-link-wrapper">
-            <a href="#" aria-current="page" className="category-link w--current">All Products</a>
+            <a href="/products" aria-current="page" className="category-link w--current">All Products</a>
           </div>
           <div className="divider cc-product-category-divider"></div>
           <div className="category-link-wrapper">
