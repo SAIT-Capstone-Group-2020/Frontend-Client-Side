@@ -129,7 +129,6 @@ function Products() {
 	const [ products, setProducts ] = useState([]);
 	const [ searchValue, setSearchValue ] = useState('');
 	const [ loading, setLoading ] = useState(false);
-	// const [filteredProducts, setFilteredProducts] = useState([]);
 
 	useEffect(() => {
 		setLoading(true);

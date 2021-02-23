@@ -16,21 +16,13 @@ const Detail = () => {
       })
   })
 
-	// useEffect(async () => {
-  //   const response = await fetch(`https://hha-capstone.herokuapp.com/api/customer/product/${productId}`);
-  //   const data = await response.json();
-  //   const [productDetail] = data;
-  //   setProduct(productDetail);
-  //   console.log(data);
-  // }, []);
-
   return (
-    <div classNameName="section cc-product-detail">
+    <div className="section cc-product-detail">
       <div className="product-image" style={{ backgroundImage: `url(${product.image_url})` }}></div>
     <div className="product-details-wrap">
       <div className="product-detail-main-details">
           <h1 className="product-detail-name">{ product.product_name }</h1>
-        <div className="paragraph-light">Should be product description. For now, it's same as product name: { product.description }</div>
+        <div className="paragraph-light">Should be product description here. For now, it's same as product name: { product.description }</div>
       </div>
       <div className="divider cc-dark-divider"></div>
       <div className="product-info">
