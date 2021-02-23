@@ -4225,6 +4225,7 @@ figcaption {
   box-shadow: 1px 1px 3px 0 rgba(0, 0, 0, 0.56);
   color: #2c2e33;
   font-size: 14px;
+  display: none;
 }
 
 .footer {
