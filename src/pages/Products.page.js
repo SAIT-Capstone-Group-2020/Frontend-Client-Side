@@ -138,7 +138,6 @@ function Products() {
 			.then((res) => {
 				setProducts(res.data);
 				setLoading(false);
-				console.log(res.data);
 			})
 			.catch((err) => {
 				console.log(err);

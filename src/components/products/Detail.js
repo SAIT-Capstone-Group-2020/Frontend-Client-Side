@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 const Detail = () => {
   const { productId } = useParams();
+  const [ product, setProduct ] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://hha-capstone.herokuapp.com/api/customer/product/${productId}`)
+      .then(res => {
+        setProduct(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  })
+
+	// useEffect(async () => {
+  //   const response = await fetch(`https://hha-capstone.herokuapp.com/api/customer/product/${productId}`);
+  //   const data = await response.json();
+  //   const [productDetail] = data;
+  //   setProduct(productDetail);
+  //   console.log(data);
+  // }, []);
 
   return (
     <div classNameName="section cc-product-detail">
-    <div className="product-image" style={{"backgroundImage":`url(${"https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.i-scmp.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F768x768%2Fpublic%2Fd8%2Fimages%2Fmethode%2F2020%2F10%2F13%2Fea674f86-076b-11eb-afc8-92e0da0ef1c3_image_hires_135401.jpg%3Fitok%3DEUh-DxEg%26v%3D1602568447&imgrefurl=https%3A%2F%2Fwww.scmp.com%2Fmagazines%2Fstyle%2Fcelebrity%2Farticle%2F3104886%2Fk-pop-idol-turned-k-drama-star-bae-suzy-5-things-about&tbnid=mvuEaS4HExIihM&vet=12ahUKEwjwqYbZ6NPuAhVKADQIHW9KAegQMygBegUIARC1AQ..i&docid=HD4SRN3z7V0_1M&w=768&h=768&q=suzy&ved=2ahUKEwjwqYbZ6NPuAhVKADQIHW9KAegQMygBegUIARC1AQ"})`}}></div>
+      <div className="product-image" style={{ backgroundImage: `url(${product.image_url})` }}></div>
     <div className="product-details-wrap">
       <div className="product-detail-main-details">
-        <h1 className="product-detail-name">Product Name</h1>
-        <div className="paragraph-light">Product Description</div>
+          <h1 className="product-detail-name">{ product.product_name }</h1>
+        <div className="paragraph-light">Should be product description. For now, it's same as product name: { product.description }</div>
       </div>
       <div className="divider cc-dark-divider"></div>
       <div className="product-info">
@@ -18,19 +38,19 @@ const Detail = () => {
           <li className="list-item">
             <div className="paragraph-light">Category</div>
             <div className="product-detail-measurement">
-              <div className="product-detail-info cc-mid-text">Food Essentials</div>
+              <div className="product-detail-info cc-mid-text">{ product.category_name }</div>
             </div>
           </li>
           <li className="list-item">
             <div className="paragraph-light">Weight</div>
             <div className="product-detail-measurement">
-              <div className="product-detail-info">2 oz</div>
+              <div className="product-detail-info">{ product.weight_value } { product.weight_type_name }</div>
             </div>
           </li>
         </ul>
       </div>
       <div className="product-detail-main-details">
-        <div className="product-detail-price">$21.80</div>
+        <div className="product-detail-price">${ product.discount_price }</div>
       </div>
       <div className="add-to-cart">
         <form className="w-commerce-commerceaddtocartform add-to-cart-default-state"><label for="quantity-3f8ec8b146ca9ed4b1d9cb3082673eb" className="label">Quantity</label>
