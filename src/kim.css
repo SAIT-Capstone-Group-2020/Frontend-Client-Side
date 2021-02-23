@@ -3857,6 +3857,7 @@ figcaption {
 
 .product-detail-info.cc-mid-text {
   margin-right: 6px;
+  text-transform: capitalize;
 }
 
 .total-count {
