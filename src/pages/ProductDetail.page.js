@@ -4,7 +4,7 @@ import Navbar from '../components/hoc/Navbar';
 import Detail from '../components/products/Detail';
 import Footer from '../components/hoc/Footer';
 
-const ProductDetail = () => {
+function ProductDetail() {
   useScript(
     'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff6189ef3859a509a1e9dfe',
   );
@@ -21,6 +21,6 @@ const ProductDetail = () => {
       <Footer />
     </div>
   );
-};
+}
 
 export default ProductDetail;
