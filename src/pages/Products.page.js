@@ -181,7 +181,7 @@ function Products() {
 						<div class="product-list-wrap">
 							{(searchValue === '' ? products : updateProducts).map((product) => (
 								<div class="product" key={product.product_name}>
-									<a href={`/product/${product.product_id}`}   class="product-thumbnail-link w-inline-block">
+									<a href={`/product/${product.product_id}`}  class="product-thumbnail-link w-inline-block">
 										<div
 											class="product-thumbnail-image"
 											style={{ backgroundImage: `url(${product.image_url})` }}
@@ -193,7 +193,7 @@ function Products() {
 											<div class="product-price-text">${product.discount_price}</div>
 										</div>
 									</a>
-									<a href="/product/${product.product_id}" class="product-thumbnail-button-link w-inline-block">
+									<a href={`/product/${product.product_id}`}  class="product-thumbnail-button-link w-inline-block">
 										<h6 class="product-thumbnail-button-text">in store only</h6>
 									</a>
 								</div>

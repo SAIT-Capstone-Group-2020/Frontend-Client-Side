@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const Detail = () => {
-  const { productID } = useParams();
+  const { productId } = useParams();
 
   return (
     <div classNameName="section cc-product-detail">
@@ -10,7 +10,7 @@ const Detail = () => {
     <div className="product-details-wrap">
       <div className="product-detail-main-details">
         <h1 className="product-detail-name">Product Name</h1>
-        <div className="paragraph-light">{ productID }</div>
+        <div className="paragraph-light">Product Description</div>
       </div>
       <div className="divider cc-dark-divider"></div>
       <div className="product-info">
