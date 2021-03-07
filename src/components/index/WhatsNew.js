@@ -48,16 +48,25 @@ const WhatsNew = () => {
                   image={image_url}
                   itemName={product_name}
                   price={is_discount ? discount_price : original_price}
+                  isDiscount={is_discount}
+                  ogPrice={original_price}
                 />
               ),
             )}
+            <NewItem
+                  key={56}
+                  id={56}
+                  image={"image_url"}
+                  itemName={"Spaghetti"}
+                  price={true ? 9.88 : 69.69}
+                  isDiscount={true}
+                  ogPrice={69.99}
+                />
             </div>
           )}
       </div>
     </div>
   );
 };
-
-WhatsNew.propTypes = {};
 
 export default WhatsNew;

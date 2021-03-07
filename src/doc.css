@@ -6069,8 +6069,9 @@ button:focus{
 
 .product-price-text-home {
   opacity: 0.6;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 26px;
+  color:hsla(180, 100%, 99.61%, 1)
 }
 
 .loader-container{
@@ -6079,4 +6080,10 @@ button:focus{
   align-items: center;
   min-height: 470px;
   max-height: 470px;
+}
+
+.product-price-text-home-disc {
+  font-size: 14px;
+  text-decoration: line-through;
+  color:hsla(180, 1.89%, 79.22%, 1)
 }

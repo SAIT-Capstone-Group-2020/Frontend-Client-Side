@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewItem = ({ id, image, itemName, price }) => {
+const NewItem = ({ id, image, itemName, price, isDiscount, ogPrice }) => {
   return (
     <div className="collection-item main-collection-item grid-collection-item">
       <a
@@ -12,7 +12,11 @@ const NewItem = ({ id, image, itemName, price }) => {
           <div className="product-name-text-wrap">
             <div className="product-name-text-home first-lang">{itemName}</div>
           </div>
-          <div className="product-price-text-home">${price}</div>
+          {isDiscount ? <div>
+            <div className="product-price-text-home-disc">${ogPrice}</div>
+            <div className="product-price-text-home">${price}</div>
+          </div>
+          : <div className="product-price-text-home">${price}</div>}
         </div>
       </a>
     </div>
