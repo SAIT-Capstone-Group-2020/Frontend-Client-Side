@@ -1,8 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 import NewItem from './NewItem';
+import useFetch from '../../utils/useFetch.hook';
+import { BeatLoader } from 'react-spinners';
 
 const WhatsNew = () => {
+  const [items, setItems] = useState();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (items) {
+      setLoading(false);
+    }
+  }, [items]);
+  useFetch(
+    'https://hha-capstone.herokuapp.com/api/customer/search?sort=product_id:desc&page=1',
+    setItems,
+  );
   return (
     <div className="whats-new-wrapper">
       <div className="container main-page-header-container">
@@ -15,20 +27,46 @@ const WhatsNew = () => {
         </div>
       </div>
       <div className="collection-list-wrapper">
-        <div className="collection-grid-wrapper">
-          <NewItem image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" />
-
-          <NewItem image="https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8Mnx8c3BhZ2hldHRpfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" />
-
-          <NewItem image="https://images.unsplash.com/photo-1575506142613-499224781394?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NDh8fHNwYWdoZXR0aXxlbnwwfHwwfA%3D%3D&auto=format&fit=crop&w=800&q=60" />
-
-          <NewItem image="https://images.unsplash.com/photo-1556761223-4c4282c73f77?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" />
-        </div>
+          {loading ? (
+            <div className="loader-container">
+              <BeatLoader color="red" />
+            </div>
+          ) : (
+            <div className="collection-grid-wrapper">
+            {items.content.map(
+              ({
+                product_id,
+                discount_price,
+                image_url,
+                is_discount,
+                original_price,
+                product_name,
+              }) => (
+                <NewItem
+                  key={product_id}
+                  id={product_id}
+                  image={image_url}
+                  itemName={product_name}
+                  price={is_discount ? discount_price : original_price}
+                  isDiscount={is_discount}
+                  ogPrice={original_price}
+                />
+              ),
+            )}
+            <NewItem
+                  key={56}
+                  id={56}
+                  image={"image_url"}
+                  itemName={"Spaghetti"}
+                  price={true ? 9.88 : 69.69}
+                  isDiscount={true}
+                  ogPrice={69.99}
+                />
+            </div>
+          )}
       </div>
     </div>
   );
 };
-
-WhatsNew.propTypes = {};
 
 export default WhatsNew;

@@ -1,18 +1,22 @@
 import React from 'react';
 
-const NewItem = ({ image }) => {
+const NewItem = ({ id, image, itemName, price, isDiscount, ogPrice }) => {
   return (
     <div className="collection-item main-collection-item grid-collection-item">
       <a
-        href="/404"
+        href={`/product/${id}`}
         className="product-image-home main-product-image-grid-home w-inline-block"
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className="cc-product-desc-home cc-desc-grid-home">
           <div className="product-name-text-wrap">
-            <div className="product-name-text-home first-lang">Spaghetti</div>
+            <div className="product-name-text-home first-lang">{itemName}</div>
           </div>
-          <div className="product-price-text-home">$12.99</div>
+          {isDiscount ? <div>
+            <div className="product-price-text-home-disc">${ogPrice}</div>
+            <div className="product-price-text-home">${price}</div>
+          </div>
+          : <div className="product-price-text-home">${price}</div>}
         </div>
       </a>
     </div>
