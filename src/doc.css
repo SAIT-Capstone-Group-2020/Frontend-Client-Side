@@ -2863,7 +2863,7 @@ figcaption {
 .nav-logo-link {
   z-index: 1;
   border-radius: 200px;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('../images/hha-logo.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
 }
@@ -3235,7 +3235,7 @@ figcaption {
   margin-top: 20px;
 }
 
-/* .footer {
+.footer {
   padding-top: 120px;
   padding-bottom: 60px;
   justify-items: start;
@@ -3268,7 +3268,7 @@ figcaption {
 
 .link-section-footer {
   margin-top: 40px;
-} */
+}
 
 .product-image-wrap {
   position: relative;
@@ -3310,6 +3310,12 @@ figcaption {
   padding-left: 5px;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.product-price-text {
+  opacity: 0.6;
+  font-size: 14px;
+  line-height: 26px;
 }
 
 .store-categories-wrap {
@@ -3485,6 +3491,7 @@ figcaption {
   margin-top: 30px;
 }
 
+
 .product-image-home {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3502,7 +3509,7 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   background-color: #f4f4f4;
-  /* background-image: url('./images/hha-logo.jpg'); */
+  /* background-image: url('../images/placeholder-1.svg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3514,8 +3521,8 @@ figcaption {
   max-height: 400px;
   margin: auto;
   border-radius: 8px;
-  /* background-image: url('./images/hha-logo.jpg'); */
-  background-position: 50% 50%;
+  /* background-image: url('../images/danijela-prijovic-qits91IZv1o-unsplash.jpg'); */
+  background-position: 50% 100%;
   box-shadow: 1px 1px 4px 0 #000;
   -webkit-transition-property: all;
   transition-property: all;
@@ -3925,7 +3932,7 @@ figcaption {
 .slide {
   width: 100%;
   padding-right: 0px;
-  /* background-image: url('./images/hha-logo.jpg'); */
+  /* background-image: url('../images/fikri-rasyid-ezeC8-clZSs-unsplash.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3938,7 +3945,7 @@ figcaption {
 .slide-2 {
   width: 100%;
   padding-right: 0px;
-  /* background-image: url('./images/hha-logo.jpg'); */
+  /* background-image: url('../images/hao-ji-vk6mX6-GvFA-unsplash.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3948,7 +3955,7 @@ figcaption {
   width: 70px;
   height: 70px;
   border-radius: 200px;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('../images/hha-logo.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -3996,8 +4003,8 @@ figcaption {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background-image: url('./images/hha-logo.jpg');
-  background-position: 50% 50%;
+  /* background-image: url('../images/ari-he-hOPX0q45u9w-unsplash.jpg'); */
+  background-position: 50% 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -4142,8 +4149,8 @@ figcaption {
   -webkit-flex: 2 auto;
   -ms-flex: 2 auto;
   flex: 2 auto;
-  /* background-image: url('./images/hha-logo.jpg'); */
-  background-position: 50% 50%;
+  /* background-image: url('../images/fran-hogan-eBArcwOXLOk-unsplash.jpg'); */
+  background-position: 50% 100%;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -4267,7 +4274,7 @@ figcaption {
 .order-summary-wrapper {
   position: -webkit-sticky;
   position: sticky;
-  top: 100px;
+  top: 10px;
   bottom: auto;
   margin-top: 161px;
   -webkit-box-flex: 0;
@@ -4406,6 +4413,8 @@ figcaption {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
   -ms-flex-pack: start;
@@ -4437,6 +4446,7 @@ figcaption {
 .order-sum-item-price {
   margin: auto 25px auto auto;
   font-size: 14px;
+  font-weight: 600;
   text-align: right;
 }
 
@@ -4469,7 +4479,7 @@ figcaption {
   max-width: 80px;
   margin: auto 10px auto 25px;
   border-radius: 8px;
-  background-image: url('./images/hha-logo.jpg');
+  /* background-image: url('../images/danijela-prijovic-qits91IZv1o-unsplash.jpg'); */
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -4492,6 +4502,23 @@ figcaption {
 }
 
 .order-sum-item-remove-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-flex: 0;
   -webkit-flex: 0 33%;
   -ms-flex: 0 33%;
@@ -4516,11 +4543,12 @@ figcaption {
 }
 
 .order-sum-item-value {
+  margin-right: 5px;
   margin-left: 5px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
+  flex: 0 auto;
   font-size: 14px;
   white-space: break-spaces;
 }
@@ -4593,7 +4621,7 @@ figcaption {
   margin-left: auto;
   border-radius: 8px;
   background-color: transparent;
-  /* background-image: url('./images/hha-logo.jpg'); */
+  /* background-image: url('../images/Screen-Shot-2021-01-24-at-1.27.14-PM.png'); */
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -4708,8 +4736,11 @@ figcaption {
   text-align: left;
 }
 
-.auth-input {
+.checkout-input {
+  width: 95%;
+  margin-right: auto;
   margin-bottom: 10px;
+  margin-left: 10px;
   border-style: solid;
   border-width: 1px;
   border-color: #c9cbcb;
@@ -4718,13 +4749,13 @@ figcaption {
   transition: all 400ms ease;
 }
 
-.auth-input:hover {
+.checkout-input:hover {
   border-style: solid;
   border-width: 1px;
   border-color: #f15c62;
 }
 
-.auth-input:focus {
+.checkout-input:focus {
   border-style: solid;
   border-width: 1px;
   border-color: #f15c62;
@@ -4776,6 +4807,72 @@ figcaption {
   color: #c9cbcb;
   text-align: center;
   text-decoration: none;
+}
+
+.order-det-rem {
+  background-color: transparent;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  color: #c9cbcb;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.order-det-rem:hover {
+  color: #f15c62;
+}
+
+.order-sum-item-change {
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  color: #c9cbcb;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.order-sum-item-change:hover {
+  color: #f15c62;
+}
+
+.checkout-num-input {
+  width: 55px;
+  height: 30px;
+  margin: auto 5px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c9cbcb;
+  border-radius: 8px;
+  -webkit-transition: all 400ms ease;
+  transition: all 400ms ease;
+  font-size: 14px;
+}
+
+.checkout-num-input:hover {
+  border-color: #f15c62;
+}
+
+.checkout-num-input:focus {
+  border-color: #f15c62;
+}
+
+.checkout-input-head {
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-left: 12px;
+}
+
+.order-sum-items-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 991px) {
@@ -5041,6 +5138,18 @@ figcaption {
     margin-left: 0px;
   }
 
+  .section.cc-checkout-page {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
   .container {
     text-align: center;
   }
@@ -5148,7 +5257,7 @@ figcaption {
     max-width: 470px;
   }
 
-  /* .footer {
+  .footer {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -5173,7 +5282,7 @@ figcaption {
   .link-section-footer {
     margin-top: 10px;
     margin-bottom: 40px;
-  } */
+  }
 
   .store-categories-wrap {
     -webkit-box-orient: vertical;
@@ -5332,8 +5441,44 @@ figcaption {
     padding-top: 6px;
   }
 
+  .order-summary-wrapper {
+    position: static;
+    width: 95%;
+    margin-top: 0px;
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+
+  .order-summary-wrapper.order-confirm-summary {
+    margin-top: 0px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 auto;
+    -ms-flex: 0 auto;
+    flex: 0 auto;
+  }
+
+  .order-details-wrapper {
+    width: 100%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 auto;
+    -ms-flex: 0 auto;
+    flex: 0 auto;
+  }
+
   .featured-header-wrap {
     margin-top: 20px;
+  }
+
+  .order-summary-items-wrap {
+    width: 95%;
+    max-width: 95%;
+  }
+
+  .order-sum-payment-wrap {
+    width: 95%;
+    max-width: 95%;
   }
 
   .auth-wrap {
@@ -5356,6 +5501,22 @@ figcaption {
 
   .auth-form-wrapper {
     padding: 30px 20px;
+  }
+
+  .checkout-num-input {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c9cbcb;
+    -webkit-transition: all 400ms ease;
+    transition: all 400ms ease;
+  }
+
+  .checkout-num-input:hover {
+    border-color: #f15c62;
+  }
+
+  .checkout-num-input:focus {
+    border-color: #f15c62;
   }
 }
 
@@ -5533,6 +5694,29 @@ figcaption {
     bottom: 250px;
   }
 
+  .order-sum-item-desc {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .order-item-img {
+    margin-left: 5px;
+  }
+
+  .order-sum-item-info-wrap {
+    text-align: center;
+  }
+
+  .order-sum-info-wrap {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
   .weekly-sale-wrapper {
     height: 70vh;
   }
@@ -5572,8 +5756,13 @@ figcaption {
     flex: 1;
   }
 
-  .auth-input {
-    width: 100%;
+  .checkout-input {
+    width: 95%;
+  }
+
+  .order-det-rem {
+    padding-top: 3px;
+    padding-bottom: 3px;
   }
 }
 
@@ -5853,6 +6042,8 @@ figcaption {
     grid-row-end: span 1;
   }
 }
+
+
 
 /* Additional */
 button:focus{

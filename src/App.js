@@ -5,6 +5,7 @@ import Products from './pages/Products.page';
 import ProductDetail from './pages/ProductDetail.page';
 import NotFound from './pages/NotFound.page'
 import CheckoutSummary from './pages/CheckoutSummary.page';
+import CheckoutForm from './pages/CheckoutForm.page';
 import './doc.css';
 import './kim.css';
 
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/products" component={Products} />
       <Route exact path="/product/:productId" component={ProductDetail} />
       <Route exact path="/checkout/summary" component={CheckoutSummary} />
+      <Route exact path="/checkout" component={CheckoutForm} />
       <Route component={NotFound} />
     </Switch>
   );
