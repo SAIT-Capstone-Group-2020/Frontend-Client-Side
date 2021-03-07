@@ -5,7 +5,10 @@ const FormItem = ({ id, itemName, weight, weightType, qty, price, image }) => {
     <div className="order-sum-item">
       <div className="order-sum-item-details">
         <div className="order-sum-item-detail-img">
-          <div className="order-item-img" style={{"backgroundImage": `url(${image})`}} />
+          <div
+            className="order-item-img"
+            style={{ backgroundImage: `url(${image})` }}
+          />
         </div>
         <div className="order-sum-item-desc">
           <div className="order-sum-item-info-wrap">

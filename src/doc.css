@@ -6072,3 +6072,11 @@ button:focus{
   font-size: 14px;
   line-height: 26px;
 }
+
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 470px;
+  max-height: 470px;
+}

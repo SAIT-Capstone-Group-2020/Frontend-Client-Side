@@ -17,10 +17,38 @@ const Form = () => {
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
           <div className="order-sum-items-flex">
-            <FormItem itemName={"Spaghetti"} weight={40} weightType={"g"} qty={1} price={25} image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" />
-            <FormItem itemName={"Spaghetti"} weight={40} weightType={"g"} qty={1} price={25} image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" />
-            <FormItem itemName={"Spaghetti"} weight={40} weightType={"g"} qty={1} price={25} image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" />
-            <FormItem itemName={"Spaghetti"} weight={40} weightType={"g"} qty={1} price={25} image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80" />
+            <FormItem
+              itemName={'Spaghetti'}
+              weight={40}
+              weightType={'g'}
+              qty={1}
+              price={25}
+              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
+            />
+            <FormItem
+              itemName={'Spaghetti'}
+              weight={40}
+              weightType={'g'}
+              qty={1}
+              price={25}
+              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
+            />
+            <FormItem
+              itemName={'Spaghetti'}
+              weight={40}
+              weightType={'g'}
+              qty={1}
+              price={25}
+              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
+            />
+            <FormItem
+              itemName={'Spaghetti'}
+              weight={40}
+              weightType={'g'}
+              qty={1}
+              price={25}
+              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
+            />
           </div>
         </div>
         <div className="order-sum-payment-wrap">
