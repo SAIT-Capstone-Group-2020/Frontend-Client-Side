@@ -56,7 +56,7 @@ const WhatsNew = () => {
             <NewItem
                   key={56}
                   id={56}
-                  image={"image_url"}
+                  image={"https://sait-capstone.s3-us-west-2.amazonaws.com/dev_image.png"}
                   itemName={"Spaghetti"}
                   price={true ? 9.88 : 69.69}
                   isDiscount={true}
