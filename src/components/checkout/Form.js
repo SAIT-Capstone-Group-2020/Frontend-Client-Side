@@ -15,8 +15,8 @@ const Form = ({ cart }) => {
   }, [cartItems]);
   // Get item data from cart
   let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
-  cart.forEach(({ item }) => {
-    url += `id=${item}&`;
+  cart.forEach(({ id }) => {
+    url += `id=${id}&`;
   });
   useFetch(url, setCartItems);
   return (
@@ -149,7 +149,7 @@ const Form = ({ cart }) => {
 
 // Type Checking
 Form.propTypes = {
-  cart: PropTypes.array,
+  cart: PropTypes.array.isRequired,
 };
 
 // getting actual data and putting it in
@@ -160,3 +160,4 @@ const mapStateToProps = state => ({
 
 // in second param of connect place functions that are from cart.actions
 export default connect(mapStateToProps, {})(Form);
+

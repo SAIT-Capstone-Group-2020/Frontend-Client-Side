@@ -7,9 +7,9 @@ export const clearCart = () => dispatch => {
   });
 };
 
-export const addToCart = (item,quantity) => dispatch => {
+export const addToCart = (id,quantity) => dispatch => {
   dispatch({
     type: ADD_TO_CART,
-    payload: { item, quantity },
+    payload: { id, quantity },
   });
 };
