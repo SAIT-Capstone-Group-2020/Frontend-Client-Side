@@ -3960,7 +3960,13 @@ figcaption {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.nav-logo:hover {
+  opacity: 0.8;
+}
 
+.nav-logo:active {
+  opacity: 0.7;
+}
 .general-button {
   border-radius: 8px;
   background-color: #f15c62;
@@ -6080,6 +6086,12 @@ button:focus{
   align-items: center;
   min-height: 470px;
   max-height: 470px;
+}
+
+.loader-container-checkout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-price-text-home-disc {

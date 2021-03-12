@@ -18,8 +18,7 @@ const FormItem = ({ id, itemName, weight, weightType, qty, price, image }) => {
             <div className="order-sum-info-wrap">
               <div className="order-sum-item-atr">Weight:</div>
               <div className="order-sum-item-value">
-                {weight}
-                {weightType}
+                {`${weight} ${weightType}`}
               </div>
             </div>
             <div className="order-sum-info-wrap">

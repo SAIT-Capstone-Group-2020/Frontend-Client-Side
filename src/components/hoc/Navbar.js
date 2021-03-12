@@ -13,7 +13,7 @@ const Navbar = () => {
         <a
           href="/"
           aria-current="page"
-          className="nav-logo-link w-nav-brand w--current"
+          className="w-nav-brand w--current"
         >
           <div className="nav-logo"></div>
         </a>
