@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FormItem from './FormItem';
+import { BeatLoader } from 'react-spinners';
+import useFetch from '../../utils/useFetch.hook';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Form = () => {
+const Form = ({ cart }) => {
+  const [cartItems, setCartItems] = useState();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    if (cartItems) {
+      setLoading(false);
+    }
+  }, [cartItems]);
+  // Get item data from cart
+  let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
+  cart.forEach(({ item }) => {
+    url += `id=${item}&`;
+  });
+  useFetch(url, setCartItems);
   return (
     <form
       id="email-form"
@@ -17,38 +34,42 @@ const Form = () => {
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
           <div className="order-sum-items-flex">
-            <FormItem
-              itemName={'Spaghetti'}
-              weight={40}
-              weightType={'g'}
-              qty={1}
-              price={25}
-              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
-            />
-            <FormItem
-              itemName={'Spaghetti'}
-              weight={40}
-              weightType={'g'}
-              qty={1}
-              price={25}
-              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
-            />
-            <FormItem
-              itemName={'Spaghetti'}
-              weight={40}
-              weightType={'g'}
-              qty={1}
-              price={25}
-              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
-            />
-            <FormItem
-              itemName={'Spaghetti'}
-              weight={40}
-              weightType={'g'}
-              qty={1}
-              price={25}
-              image="https://images.unsplash.com/photo-1567423285116-c31e6a93e939?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=975&q=80"
-            />
+            {loading ? (
+              <div className="loader-container-checkout">
+                <BeatLoader color="red" />
+              </div>
+            ) : (
+              <div>
+                {cartItems.map(
+                  (
+                    {
+                      product_id,
+                      discount_price,
+                      image_url,
+                      is_discount,
+                      original_price,
+                      product_name,
+                      weight_value,
+                      weight_type_name,
+                    },
+                    index,
+                  ) => (
+                    <FormItem
+                      key={product_id}
+                      id={product_id}
+                      image={image_url}
+                      itemName={product_name}
+                      price={is_discount ? discount_price : original_price}
+                      isDiscount={is_discount}
+                      ogPrice={original_price}
+                      qty={cart[index].quantity}
+                      weight={weight_value}
+                      weightType={weight_type_name}
+                    />
+                  ),
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className="order-sum-payment-wrap">
@@ -125,4 +146,17 @@ const Form = () => {
     </form>
   );
 };
-export default Form;
+
+// Type Checking
+Form.propTypes = {
+  cart: PropTypes.array,
+};
+
+// getting actual data and putting it in
+// const Form = ({ cart })
+const mapStateToProps = state => ({
+  cart: state.hhaCart,
+});
+
+// in second param of connect place functions that are from cart.actions
+export default connect(mapStateToProps, {})(Form);

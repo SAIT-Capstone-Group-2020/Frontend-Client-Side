@@ -6088,6 +6088,12 @@ button:focus{
   max-height: 470px;
 }
 
+.loader-container-checkout{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .product-price-text-home-disc {
   font-size: 14px;
   text-decoration: line-through;
