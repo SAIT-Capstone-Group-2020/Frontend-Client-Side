@@ -14,7 +14,7 @@ const Detail = () => {
       .catch(err => {
         console.log(err);
       })
-  })
+  },[])
 
   return (
     <div className="section cc-product-detail">
