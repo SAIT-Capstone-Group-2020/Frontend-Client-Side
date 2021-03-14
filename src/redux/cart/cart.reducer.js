@@ -2,7 +2,7 @@ import { ADD_TO_CART, CLEAR_CART } from '../types';
 // const INI_STATE = [];
 
 // !For now we'll have an initial item inside the the cart
-const INI_STATE = [{
+export const INI_STATE = [{
     id: 1,
     quantity: 1,
 }];

@@ -4,10 +4,13 @@ import { BeatLoader } from 'react-spinners';
 import useFetch from '../../utils/useFetch.hook';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Navbar from '../hoc/Navbar';
+import Summary from './Summary';
 
 const Form = ({ cart }) => {
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false)
   useEffect(() => {
     if (cartItems) {
       setLoading(false);
@@ -19,8 +22,10 @@ const Form = ({ cart }) => {
     url += `id=${id}&`;
   });
   useFetch(url, setCartItems);
-  return (
-    <form
+  const test = () =>{
+    setIsSuccess(true)
+  }
+  return !isSuccess ? <form
       id="email-form"
       name="email-form"
       data-name="Email Form"
@@ -30,6 +35,7 @@ const Form = ({ cart }) => {
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
+        <button onClick={test}>Test</button>
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
@@ -143,8 +149,7 @@ const Form = ({ cart }) => {
           />
         </div>
       </div>
-    </form>
-  );
+    </form>: <div><Navbar /> <Summary /></div>;
 };
 
 // Type Checking
