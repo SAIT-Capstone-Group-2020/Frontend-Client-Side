@@ -17,9 +17,9 @@ function Products() {
 	useEffect(() => {
 		setLoading(true);
 		axios
-			.get('https://hha-capstone.herokuapp.com/api/customer/product')
+			.get('https://hha-capstone.herokuapp.com/api/customer/search?cate=fruit&sort=discount_price:desc')
 			.then((res) => {
-				setProducts(res.data);
+				setProducts(res.data.content);
 				setLoading(false);
 			})
 			.catch((err) => {
@@ -64,7 +64,7 @@ function Products() {
 										</div>
 									</a>
 									<a href={`/product/${product.product_id}`}  class="product-thumbnail-button-link w-inline-block">
-										<h6 class="product-thumbnail-button-text">in store only</h6>
+										<h6 class="product-thumbnail-button-text">read more</h6>
 									</a>
 								</div>
 							))}

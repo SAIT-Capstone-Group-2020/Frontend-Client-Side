@@ -8,7 +8,7 @@ const SortDropdown = () => {
           <div data-hover="" data-delay="0" className="product-list-filter-dropdown w-dropdown">
             <div className="product-list-filter-toggle w-dropdown-toggle">
               <div className="w-icon-dropdown-toggle"></div>
-              <div className="product-list-filter-name">Sort by price: low to high</div>
+              <div className="product-list-filter-name">Sort by price: high to low</div>
             </div>
             <nav className="product-filter-dropdown-list w-dropdown-list">
               <a href="#" className="product-list-filter-option w-dropdown-link">Sort by latest</a>

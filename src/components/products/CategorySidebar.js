@@ -1,7 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
-const CategorySidebar = () => {
+const CategorySidebar = ({ categoryHandler }) => {
+  const handleCategoryChange = e => {
+    categoryHandler(e.target.value);
+  };
+
   return (
     <div className="store-heading-categories-wrap">
       <div className="category-link-list-wrapper">
@@ -12,11 +16,11 @@ const CategorySidebar = () => {
           </div>
           <div className="divider cc-product-category-divider"></div>
           <div className="category-link-wrapper">
-            <a href="#" className="category-link">fruits &amp; vegetables</a>
+            <a href="#" onClick={handleCategoryChange} className="category-link" data-value="fruit">fruits &amp; vegetables</a>
           </div>
           <div className="divider cc-product-category-divider"></div>
           <div className="category-link-wrapper">
-            <a href="#" className="category-link">meat</a>
+            <a href="https://hha-capstone.herokuapp.com/api/customer/search?cate=meat" className="category-link">meat</a>
           </div>
           <div className="divider cc-product-category-divider"></div>
           <div className="category-link-wrapper">
