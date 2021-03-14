@@ -11,14 +11,40 @@ const Form = () => {
   // ! Gain access to Context/Reducer
   const { state, dispatch } = useContext(Store);
 
+  const [orderSummary, setOrderSummary] = useState({});
+  const [inputs, setInputs] = useState({});
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false)
   useEffect(() => {
     if (cartItems) {
+      if(state.length === cartItems.length && state.length !== 0){
+        let total = 0;
+      state.forEach((item,index)=>{
+        if(cartItems[index].is_discount) {
+          total += cartItems[index].discount_price * item.quantity;
+        } else {
+          total += cartItems[index].original_price * item.quantity;
+        }
+      })
+      const gst = total * 0.05;
+      const finalTotal = total + gst;
+      setOrderSummary({
+        total: (Math.round(total * 100) / 100).toFixed(2), 
+        gst: (Math.round(gst * 100) / 100).toFixed(2), 
+        finalTotal: (Math.round(finalTotal * 100) / 100).toFixed(2)
+      })
+      } else if (state.length === 0) {
+        setOrderSummary({
+        total: 0.00, 
+        gst: 0.00, 
+        finalTotal: 0.00
+      })
+      }
+      
       setLoading(false);
     }
-  }, [cartItems]);
+  }, [cartItems, state]);
   // Get item data from cart
   let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
   state.forEach(({ id }) => {
@@ -27,30 +53,38 @@ const Form = () => {
   // ! Grabs cart item info from API of items in state 
   useGetCart(state, url, setCartItems);
 
-  // Delete later
-  const test = () =>{
-    setIsSuccess(true)
-  }
-
   // ! Tests / demo how to use the cart.actions
-  const testAdd = () =>{
+  const testAdd = e =>{
+    e.preventDefault()
     addToCart(1,1,dispatch);
   }
-  const testClear = () =>{
+  const testClear = e =>{
+    e.preventDefault()
     clearCart(dispatch);
   }
-  
+
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs({ ...inputs, [name]: value })
+  }
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const {name, email, confirmEmail, phone} = inputs;
+     setIsSuccess(true)
+  }
   return !isSuccess ? <form
       id="email-form"
       name="email-form"
       data-name="Email Form"
       className="section cc-checkout-page"
+      onSubmit={handleSubmit}
     >
       <div className="order-details-wrapper">
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        <button onClick={test}>Test</button>
         <button onClick={testAdd}>
           Add Item
         </button>
@@ -110,7 +144,8 @@ const Form = () => {
             data-name="name"
             placeholder="John Doe"
             id="name"
-            required=""
+            required
+            onChange={handleChange}
           />
           <h6 className="checkout-input-head">Email</h6>
           <input
@@ -121,7 +156,8 @@ const Form = () => {
             data-name="email"
             placeholder="jdoe@gmail.com"
             id="email"
-            required=""
+            required
+            onChange={handleChange}
           />
           <h6 className="checkout-input-head">Confirm Email</h6>
           <input
@@ -132,7 +168,8 @@ const Form = () => {
             data-name="confirmEmail"
             placeholder="jdoe@gmail.com"
             id="confirmEmail"
-            required=""
+            required
+            onChange={handleChange}
           />
           <h6 className="checkout-input-head">Phone</h6>
           <input
@@ -143,7 +180,8 @@ const Form = () => {
             data-name="phone"
             placeholder="403-123-4567"
             id="phone"
-            required=""
+            required
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -152,15 +190,15 @@ const Form = () => {
           <h3 className="order-summary-header">Order Summary</h3>
           <div className="summary-price-container">
             <div className="summary-desc">Total before tax: </div>
-            <div className="summary-price">$100.00 CAD</div>
+            <div className="summary-price">${orderSummary.total} CAD</div>
           </div>
           <div className="summary-price-container">
             <div className="summary-desc">Calculated GST:</div>
-            <div className="summary-price">$5.00 CAD</div>
+            <div className="summary-price">${orderSummary.gst} CAD</div>
           </div>
           <div className="order-summary-total-container">
             <h5 className="order-total-price">Order Total: </h5>
-            <h5 className="order-total-price">$105.00 CAD</h5>
+            <h5 className="order-total-price">${orderSummary.finalTotal} CAD</h5>
           </div>
           <input
             type="submit"
@@ -169,7 +207,7 @@ const Form = () => {
           />
         </div>
       </div>
-    </form> : <div><Navbar /> <Summary /></div>;
+    </form> : <div><Navbar /> <Summary inputs={inputs} cartItems={cartItems} cart={state} orderSummary={orderSummary} /></div>;
 };
 
 export default Form;

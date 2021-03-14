@@ -4,7 +4,7 @@ import SummaryItems from './SummaryItems';
 import SummaryOrder from './SummaryOrder';
 import useScript from '../../utils/useScript.hook'
 
-const Summary = () => {
+const Summary = ({inputs, cartItems, cart, orderSummary}) => {
   useScript(
     'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff4fd881cc2cd35ee68ff88',
   );
@@ -15,10 +15,10 @@ const Summary = () => {
     <div className="section cc-checkout-page">
       <div className="order-details-wrapper">
         <h1 className="order-summary-main-header">Order Details</h1>
-        <SummaryItems />
-        <SummaryInfo />
+        <SummaryItems cartItems={cartItems} cart={cart} />
+        <SummaryInfo inputs={inputs}/>
       </div>
-      <SummaryOrder />
+      <SummaryOrder orderSummary={orderSummary} />
     </div>
   );
 };
