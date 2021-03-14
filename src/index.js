@@ -7,9 +7,13 @@ import { store, persistor } from './redux/store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './components/hoc/Store';
+
+// ! Replace Provider with storeProvider later
 
 ReactDOM.render(
   <React.StrictMode>
+  <StoreProvider>
     <Provider store={store}>
       <Router forceRefresh>
         <PersistGate persistor={persistor}>
@@ -17,6 +21,7 @@ ReactDOM.render(
         </PersistGate>
       </Router>
     </Provider>
+  </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import useScript from '../utils/useScript.hook';
 import Footer from '../components/hoc/Footer';
-import Form from '../components/checkout/Form';
+import Form from '../components/checkout/FormNotRedux';
 
 const CheckoutForm = () => {
   useScript(
