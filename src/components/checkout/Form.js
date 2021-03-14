@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import FormItem from './FormItem';
 import { BeatLoader } from 'react-spinners';
-import useFetch from '../../utils/useFetch.hook';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Navbar from '../hoc/Navbar';
 import Summary from './Summary';
+// ! Import for Context/reducer
+import { Store } from '../hoc/Store';
+import {useGetCart, addToCart, clearCart} from '../hoc/cart.actions'
 
-const Form = ({ cart }) => {
+const Form = () => {
+  // ! Gain access to Context/Reducer
+  const { state, dispatch } = useContext(Store);
+
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false)
@@ -18,13 +21,25 @@ const Form = ({ cart }) => {
   }, [cartItems]);
   // Get item data from cart
   let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
-  cart.forEach(({ id }) => {
+  state.forEach(({ id }) => {
     url += `id=${id}&`;
   });
-  useFetch(url, setCartItems);
+  // ! Grabs cart item info from API of items in state 
+  useGetCart(state, url, setCartItems);
+
+  // Delete later
   const test = () =>{
     setIsSuccess(true)
   }
+
+  // ! Tests / demo how to use the cart.actions
+  const testAdd = () =>{
+    addToCart(1,1,dispatch);
+  }
+  const testClear = () =>{
+    clearCart(dispatch);
+  }
+  
   return !isSuccess ? <form
       id="email-form"
       name="email-form"
@@ -36,6 +51,10 @@ const Form = ({ cart }) => {
           Continue Shopping
         </a>
         <button onClick={test}>Test</button>
+        <button onClick={testAdd}>
+          Add Item
+        </button>
+        <button onClick={testClear}>Clear Items</button>
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
@@ -46,7 +65,8 @@ const Form = ({ cart }) => {
               </div>
             ) : (
               <div>
-                {cartItems.map(
+                {state.length === cartItems.length ?
+                  cartItems.map(
                   (
                     {
                       product_id,
@@ -68,12 +88,13 @@ const Form = ({ cart }) => {
                       price={is_discount ? discount_price : original_price}
                       isDiscount={is_discount}
                       ogPrice={original_price}
-                      qty={cart[index].quantity}
+                      qty={state[index].quantity}
                       weight={weight_value}
                       weightType={weight_type_name}
                     />
                   ),
-                )}
+                ) : null
+                }
               </div>
             )}
           </div>
@@ -84,7 +105,6 @@ const Form = ({ cart }) => {
           <input
             type="text"
             className="checkout-input w-input"
-            autoFocus="true"
             maxLength="256"
             name="name"
             data-name="name"
@@ -149,20 +169,8 @@ const Form = ({ cart }) => {
           />
         </div>
       </div>
-    </form>: <div><Navbar /> <Summary /></div>;
+    </form> : <div><Navbar /> <Summary /></div>;
 };
 
-// Type Checking
-Form.propTypes = {
-  cart: PropTypes.array.isRequired,
-};
-
-// getting actual data and putting it in
-// const Form = ({ cart })
-const mapStateToProps = state => ({
-  cart: state.hhaCart,
-});
-
-// in second param of connect place functions that are from cart.actions
-export default connect(mapStateToProps, {})(Form);
+export default Form;
 

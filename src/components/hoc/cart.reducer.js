@@ -1,38 +1,35 @@
+// ! This file sets the state of the cart in local storage and in react.
 import { ADD_TO_CART, CLEAR_CART } from './types';
 
-// !For now we'll have an initial item inside the the cart
+// ! This function returns the cart from local storage for persistence. If there is nothing in localstorage, an empty array will be set and returned.
 export const ini_state = () => {
-  let cart = JSON.parse(localStorage.getItem("hhaCart"));
-  if(!cart) {
-    // if it doesn't exist then populate with empty cart later.
-    localStorage.setItem('hhaCart', JSON.stringify(
-    //   [{
-    // id: 1,
-    // quantity: 1,
-    // }]
-    []
-  ))
-  cart = [];
-  }else {
-    console.log(cart)
+  // ! sending and retrieving the cart array from local storage needs JSON.parse and JSON.stringify
+  let cart = JSON.parse(localStorage.getItem('hhaCart'));
+  if (!cart) {
+    // if it doesn't exist then populate with empty array.
+    localStorage.setItem('hhaCart', JSON.stringify([]));
+    cart = [];
   }
   return cart;
-}
+};
 
-
-
+// ! This function is what sets the cart in local storage and the global state in react
 const cartReducer = (state = ini_state, { type, payload }) => {
   switch (type) {
     case CLEAR_CART:
-      return ini_state;
+      const clearCart = [];
+      localStorage.setItem('hhaCart', JSON.stringify(clearCart));
+      return clearCart;
     case ADD_TO_CART:
-      return [
+      const addCart = [
         ...state,
         {
           id: payload.id,
           quantity: payload.quantity,
         },
       ];
+      localStorage.setItem('hhaCart', JSON.stringify(addCart));
+      return addCart;
     default:
       return state;
   }
