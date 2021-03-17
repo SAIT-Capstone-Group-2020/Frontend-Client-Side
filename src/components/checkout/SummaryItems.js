@@ -46,11 +46,37 @@ const SummaryItems = ({ cartItems, cart }) => {
                       </div>
                     </div>
                   </div>
-                  <div className="order-sum-item-price-wrap">
-                    <div className="order-sum-item-price">
-                      ${is_discount ? discount_price : original_price}
+                  {is_discount ? (
+                    <div className="order-sum-item-price-wrap">
+                      <div className="order-sum-item-price-discount">
+                        $
+                        {(
+                          Math.round(
+                            original_price * cart[index].quantity * 100,
+                          ) / 100
+                        ).toFixed(2)}
+                      </div>
+                      <div className="order-sum-item-price">
+                        $
+                        {(
+                          Math.round(
+                            discount_price * cart[index].quantity * 100,
+                          ) / 100
+                        ).toFixed(2)}
+                      </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="order-sum-item-price-wrap">
+                      <div className="order-sum-item-price-no-disc">
+                        $
+                        {(
+                          Math.round(
+                            original_price * cart[index].quantity * 100,
+                          ) / 100
+                        ).toFixed(2)}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ),
             )
