@@ -1,5 +1,5 @@
 // ! This file sets the state of the cart in local storage and in react.
-import { ADD_TO_CART, CLEAR_CART } from './types';
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from './types';
 
 // ! This function returns the cart from local storage for persistence. If there is nothing in localstorage, an empty array will be set and returned.
 export const ini_state = () => {
@@ -20,6 +20,11 @@ const cartReducer = (state = ini_state, { type, payload }) => {
       const clearCart = [];
       localStorage.setItem('hhaCart', JSON.stringify(clearCart));
       return clearCart;
+    case REMOVE_FROM_CART:
+      // Returns array of items that do not have that id
+      const removeCart = state.filter(({id})=>id !== payload);
+      localStorage.setItem('hhaCart', JSON.stringify(removeCart));
+      return removeCart;
     case ADD_TO_CART:
       const addCart = [
         ...state,

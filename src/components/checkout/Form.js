@@ -125,6 +125,7 @@ const Form = () => {
                       qty={state[index].quantity}
                       weight={weight_value}
                       weightType={weight_type_name}
+                      dispatch={dispatch}
                     />
                   ),
                 ) : null

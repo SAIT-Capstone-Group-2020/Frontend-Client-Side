@@ -1,6 +1,11 @@
 import React from 'react';
+import {removeFromCart} from '../hoc/cart.actions';
 
-const FormItem = ({ id, itemName, weight, weightType, qty, price, image }) => {
+const FormItem = ({ id, itemName, weight, weightType, qty, price, image, dispatch }) => {
+  const handleRemove = e => {
+    e.preventDefault();
+    removeFromCart(id,dispatch);
+  }
   return (
     <div className="order-sum-item">
       <div className="order-sum-item-details">
@@ -27,12 +32,12 @@ const FormItem = ({ id, itemName, weight, weightType, qty, price, image }) => {
             </div>
           </div>
           <div className="order-sum-item-remove-wrap">
-            <a href="#" className="order-det-rem w-button">
+            <button className="order-det-rem w-button" onClick={handleRemove}>
               Remove
-            </a>
-            <a href="#" className="order-det-rem w-button">
+            </button>
+            <button className="order-det-rem w-button">
               CHANGE
-            </a>
+            </button>
           </div>
         </div>
       </div>
