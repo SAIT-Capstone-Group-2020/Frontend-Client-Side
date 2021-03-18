@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
 import FormItem from './FormItem';
 import { BeatLoader } from 'react-spinners';
-import Navbar from '../hoc/Navbar';
-import Summary from './Summary';
+import Alert from './Alert';
+import { Redirect } from 'react-router-dom';
+import moment from 'moment';
+
 // ! Import for Context/reducer
 import { Store } from '../hoc/Store';
-import { useGetCart, addToCart, clearCart } from '../hoc/cart.actions';
-import Alert from './Alert';
+import { useGetCart, addToCart, saveLocal } from '../hoc/cart.actions';
 
 const Form = () => {
   // ! Gain access to Context/Reducer
@@ -19,6 +20,9 @@ const Form = () => {
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [buttonText, setButtonText] = useState("Pay in Store");
+  const submitBtn = useRef();
+
   useEffect(() => {
     if (cartItems) {
       if (state.length === cartItems.length && state.length !== 0) {
@@ -47,6 +51,27 @@ const Form = () => {
 
       setLoading(false);
     }
+    window.addEventListener(
+      'keydown',
+      e => {
+        if (
+          e.keyIdentifier === 'U+000A' ||
+          e.keyIdentifier === 'Enter' ||
+          e.keyCode === 13
+        ) {
+          if (
+            e.target.nodeName === 'INPUT' &&
+            (e.target.type === 'text' ||
+              e.target.type === 'email' ||
+              e.target.type === 'tel')
+          ) {
+            e.preventDefault();
+            return false;
+          }
+        }
+      },
+      true,
+    );
   }, [cartItems, state]);
   // Get item data from cart
   let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
@@ -59,8 +84,8 @@ const Form = () => {
   // ! Tests / demo how to use the cart.actions
   const testAdd = e => {
     e.preventDefault();
-    // addToCart(1,1,dispatch);
-    addToCart(41, 1, dispatch);
+    addToCart(1, 3, dispatch);
+    // addToCart(41, 1, dispatch);
   };
 
   const handleChange = e => {
@@ -71,23 +96,36 @@ const Form = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    let hasError = false;
     const { name, email, confirmEmail, phone } = inputs;
     if (!/^([\w]{3,})+\s+([\w\s]{3,})+$/i.test(name)) {
       setErrorMsg('Error: Please Enter Your Full Name');
+      hasError = true;
     } else if (
       !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email.toLowerCase(),
       )
     ) {
       setErrorMsg('Error: Please Enter A Valid Email');
+      hasError = true;
     } else if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
       setErrorMsg('Error: Emails Do Not Match');
+      hasError = true;
     } else if (!/^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/.test(phone)) {
       setErrorMsg('Error: Phone Number Format (403-123-4567)');
+      hasError = true;
+    } else if (state.length === 0) {
+      setErrorMsg('Error: Add Items to Order');
+      hasError = true;
+    } else {
+      hasError = false;
     }
-    if (errorMsg.length > 0) {
+
+    if (hasError) {
       window.scrollTo(0, 0);
     } else {
+    setButtonText("Processing...");
+      submitBtn.current.setAttribute("disabled", "disabled");
       submitForm({
         name,
         email: email.toLowerCase(),
@@ -119,14 +157,23 @@ const Form = () => {
         config,
       )
       .then(res => {
+        saveLocal({
+          hhaSummary: {
+            cartItems: [...cartItems],
+            cart: [...state],
+            inputs: { ...inputs, date: moment().format('L') },
+            orderSummary: { ...orderSummary },
+          },
+        });
         setIsSuccess(true);
-        clearCart(dispatch);
       })
       .catch(err => {
         setErrorMsg('Error: Pay In Store Error. Please try again later!');
       });
   };
-  return !isSuccess ? (
+  if (isSuccess) return <Redirect to="/checkout/summary" />;
+
+  return (
     <form
       id="email-form"
       name="email-form"
@@ -139,9 +186,7 @@ const Form = () => {
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        {/* <button onClick={testAdd}>
-          Add Item
-        </button>*/}
+        {/* <button onClick={testAdd}>Add Item</button> */}
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
@@ -258,22 +303,13 @@ const Form = () => {
           </div>
           <input
             type="submit"
-            value="Pay in Store"
+            value={buttonText}
             className="button general-button order-checkout-btn w-button"
+            ref={submitBtn}
           />
         </div>
       </div>
     </form>
-  ) : (
-    <div>
-      <Navbar />{' '}
-      <Summary
-        inputs={inputs}
-        cartItems={cartItems}
-        cart={state}
-        orderSummary={orderSummary}
-      />
-    </div>
   );
 };
 

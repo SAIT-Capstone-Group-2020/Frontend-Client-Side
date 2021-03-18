@@ -3522,7 +3522,7 @@ figcaption {
   margin: auto;
   border-radius: 8px;
   /* background-image: url('../images/danijela-prijovic-qits91IZv1o-unsplash.jpg'); */
-  background-position: 50% 100%;
+  background-position: 50% 50%;
   box-shadow: 1px 1px 4px 0 #000;
   -webkit-transition-property: all;
   transition-property: all;
@@ -4010,7 +4010,7 @@ figcaption {
   -ms-flex-align: center;
   align-items: center;
   /* background-image: url('../images/ari-he-hOPX0q45u9w-unsplash.jpg'); */
-  background-position: 50% 100%;
+  background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -4156,7 +4156,7 @@ figcaption {
   -ms-flex: 2 auto;
   flex: 2 auto;
   /* background-image: url('../images/fran-hogan-eBArcwOXLOk-unsplash.jpg'); */
-  background-position: 50% 100%;
+  background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
 }
