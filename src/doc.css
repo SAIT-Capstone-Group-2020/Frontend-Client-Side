@@ -4594,7 +4594,7 @@ figcaption {
 .msg-banner-wrap {
   position: absolute;
   left: 0px;
-  top: 0px;
+  top: -90px;
   right: 0px;
   height: 50px;
 }

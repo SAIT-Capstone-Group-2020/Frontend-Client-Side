@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import FormItem from './FormItem';
 import { BeatLoader } from 'react-spinners';
 import Navbar from '../hoc/Navbar';
@@ -6,11 +7,13 @@ import Summary from './Summary';
 // ! Import for Context/reducer
 import { Store } from '../hoc/Store';
 import { useGetCart, addToCart, clearCart } from '../hoc/cart.actions';
+import Alert from './Alert';
 
 const Form = () => {
   // ! Gain access to Context/Reducer
   const { state, dispatch } = useContext(Store);
 
+  const [errorMsg, setErrorMsg] = useState('');
   const [orderSummary, setOrderSummary] = useState({});
   const [inputs, setInputs] = useState({});
   const [cartItems, setCartItems] = useState();
@@ -59,10 +62,6 @@ const Form = () => {
     // addToCart(1,1,dispatch);
     addToCart(41, 1, dispatch);
   };
-  const testClear = e => {
-    e.preventDefault();
-    clearCart(dispatch);
-  };
 
   const handleChange = e => {
     const name = e.target.name;
@@ -73,7 +72,59 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const { name, email, confirmEmail, phone } = inputs;
-    setIsSuccess(true);
+    if (!/^([\w]{3,})+\s+([\w\s]{3,})+$/i.test(name)) {
+      setErrorMsg('Error: Please Enter Your Full Name');
+    } else if (
+      !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email.toLowerCase(),
+      )
+    ) {
+      setErrorMsg('Error: Please Enter A Valid Email');
+    } else if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
+      setErrorMsg('Error: Emails Do Not Match');
+    } else if (!/^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/.test(phone)) {
+      setErrorMsg('Error: Phone Number Format (403-123-4567)');
+    }
+    if (errorMsg.length > 0) {
+      window.scrollTo(0, 0);
+    } else {
+      submitForm({
+        name,
+        email: email.toLowerCase(),
+        confirmEmail: confirmEmail.toLowerCase(),
+        phone,
+      });
+    }
+  };
+
+  const submitForm = ({ name, email, confirmEmail, phone }) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const body = JSON.stringify({
+      name,
+      email,
+      confirmEmail,
+      phone,
+      orderItem: state,
+    });
+
+    axios
+      .post(
+        `https://hha-capstone.herokuapp.com/api/customer/order`,
+        body,
+        config,
+      )
+      .then(res => {
+        setIsSuccess(true);
+        clearCart(dispatch);
+      })
+      .catch(err => {
+        setErrorMsg('Error: Pay In Store Error. Please try again later!');
+      });
   };
   return !isSuccess ? (
     <form
@@ -83,14 +134,14 @@ const Form = () => {
       className="section cc-checkout-page"
       onSubmit={handleSubmit}
     >
+      {errorMsg.length > 0 ? <Alert msg={errorMsg} /> : null}
       <div className="order-details-wrapper">
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
         {/* <button onClick={testAdd}>
           Add Item
-        </button>
-        <button onClick={testClear}>Clear Items</button> */}
+        </button>*/}
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Alert = () => {
+const Alert = ({msg}) => {
   return (
     <div className="msg-banner-wrap msg-failed">
-      <div className="text-block">Payment failed!</div>
+      <div className="text-block">{msg}</div>
     </div>
   );
 };

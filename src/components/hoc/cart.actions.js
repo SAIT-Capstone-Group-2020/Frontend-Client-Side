@@ -1,6 +1,11 @@
 // ! This file holds the actions that are called from the component. All functions need the dispatch parameter if it will be passed to the reducer to change the state of the cart.
 import { useState, useEffect } from 'react';
-import { CLEAR_CART, ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY } from './types';
+import {
+  CLEAR_CART,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  UPDATE_QUANTITY,
+} from './types';
 
 // ! Replaces the useFetch hook in the utils folder because we can't wrap a hook in conditionals. Only difference is the state is passed in and there is an if-else.
 export const useGetCart = (state, url, setData) => {
@@ -50,12 +55,12 @@ export const removeFromCart = (id, dispatch) => {
   dispatch({
     type: REMOVE_FROM_CART,
     payload: id,
-  })
-}
+  });
+};
 
-export const updateQuatity = (id, quantity ,dispatch) => {
+export const updateQuatity = (id, quantity, dispatch) => {
   dispatch({
     type: UPDATE_QUANTITY,
-    payload: {id,quantity},
-  })
-}
+    payload: { id, quantity },
+  });
+};
