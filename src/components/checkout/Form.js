@@ -1,47 +1,50 @@
 import React, { useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import FormItem from './FormItem';
 import { BeatLoader } from 'react-spinners';
 import Navbar from '../hoc/Navbar';
 import Summary from './Summary';
 // ! Import for Context/reducer
 import { Store } from '../hoc/Store';
-import {useGetCart, addToCart, clearCart} from '../hoc/cart.actions'
+import { useGetCart, addToCart, clearCart } from '../hoc/cart.actions';
+import Alert from './Alert';
 
 const Form = () => {
   // ! Gain access to Context/Reducer
   const { state, dispatch } = useContext(Store);
 
+  const [errorMsg, setErrorMsg] = useState('');
   const [orderSummary, setOrderSummary] = useState({});
   const [inputs, setInputs] = useState({});
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false);
   useEffect(() => {
     if (cartItems) {
-      if(state.length === cartItems.length && state.length !== 0){
+      if (state.length === cartItems.length && state.length !== 0) {
         let total = 0;
-      state.forEach((item,index)=>{
-        if(cartItems[index].is_discount) {
-          total += cartItems[index].discount_price * item.quantity;
-        } else {
-          total += cartItems[index].original_price * item.quantity;
-        }
-      })
-      const gst = total * 0.05;
-      const finalTotal = total + gst;
-      setOrderSummary({
-        total: (Math.round(total * 100) / 100).toFixed(2), 
-        gst: (Math.round(gst * 100) / 100).toFixed(2), 
-        finalTotal: (Math.round(finalTotal * 100) / 100).toFixed(2)
-      })
+        state.forEach((item, index) => {
+          if (cartItems[index].is_discount) {
+            total += cartItems[index].discount_price * item.quantity;
+          } else {
+            total += cartItems[index].original_price * item.quantity;
+          }
+        });
+        const gst = total * 0.05;
+        const finalTotal = total + gst;
+        setOrderSummary({
+          total: (Math.round(total * 100) / 100).toFixed(2),
+          gst: (Math.round(gst * 100) / 100).toFixed(2),
+          finalTotal: (Math.round(finalTotal * 100) / 100).toFixed(2),
+        });
       } else if (state.length === 0) {
         setOrderSummary({
-        total: 0.00, 
-        gst: 0.00, 
-        finalTotal: 0.00
-      })
+          total: 0.0,
+          gst: 0.0,
+          finalTotal: 0.0,
+        });
       }
-      
+
       setLoading(false);
     }
   }, [cartItems, state]);
@@ -50,45 +53,95 @@ const Form = () => {
   state.forEach(({ id }) => {
     url += `id=${id}&`;
   });
-  // ! Grabs cart item info from API of items in state 
+  // ! Grabs cart item info from API of items in state
   useGetCart(state, url, setCartItems);
 
   // ! Tests / demo how to use the cart.actions
-  const testAdd = e =>{
-    e.preventDefault()
-    addToCart(1,1,dispatch);
-  }
-  const testClear = e =>{
-    e.preventDefault()
-    clearCart(dispatch);
-  }
+  const testAdd = e => {
+    e.preventDefault();
+    // addToCart(1,1,dispatch);
+    addToCart(41, 1, dispatch);
+  };
 
   const handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    setInputs({ ...inputs, [name]: value })
-  }
+    setInputs({ ...inputs, [name]: value });
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    const {name, email, confirmEmail, phone} = inputs;
-     setIsSuccess(true)
-  }
-  return !isSuccess ? <form
+    const { name, email, confirmEmail, phone } = inputs;
+    if (!/^([\w]{3,})+\s+([\w\s]{3,})+$/i.test(name)) {
+      setErrorMsg('Error: Please Enter Your Full Name');
+    } else if (
+      !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email.toLowerCase(),
+      )
+    ) {
+      setErrorMsg('Error: Please Enter A Valid Email');
+    } else if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
+      setErrorMsg('Error: Emails Do Not Match');
+    } else if (!/^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/.test(phone)) {
+      setErrorMsg('Error: Phone Number Format (403-123-4567)');
+    }
+    if (errorMsg.length > 0) {
+      window.scrollTo(0, 0);
+    } else {
+      submitForm({
+        name,
+        email: email.toLowerCase(),
+        confirmEmail: confirmEmail.toLowerCase(),
+        phone,
+      });
+    }
+  };
+
+  const submitForm = ({ name, email, confirmEmail, phone }) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const body = JSON.stringify({
+      name,
+      email,
+      confirmEmail,
+      phone,
+      orderItem: state,
+    });
+
+    axios
+      .post(
+        `https://hha-capstone.herokuapp.com/api/customer/order`,
+        body,
+        config,
+      )
+      .then(res => {
+        setIsSuccess(true);
+        clearCart(dispatch);
+      })
+      .catch(err => {
+        setErrorMsg('Error: Pay In Store Error. Please try again later!');
+      });
+  };
+  return !isSuccess ? (
+    <form
       id="email-form"
       name="email-form"
       data-name="Email Form"
       className="section cc-checkout-page"
       onSubmit={handleSubmit}
     >
+      {errorMsg.length > 0 ? <Alert msg={errorMsg} /> : null}
       <div className="order-details-wrapper">
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        <button onClick={testAdd}>
+        {/* <button onClick={testAdd}>
           Add Item
-        </button>
-        <button onClick={testClear}>Clear Items</button>
+        </button>*/}
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
@@ -99,36 +152,37 @@ const Form = () => {
               </div>
             ) : (
               <div>
-                {state.length === cartItems.length ?
-                  cartItems.map(
-                  (
-                    {
-                      product_id,
-                      discount_price,
-                      image_url,
-                      is_discount,
-                      original_price,
-                      product_name,
-                      weight_value,
-                      weight_type_name,
-                    },
-                    index,
-                  ) => (
-                    <FormItem
-                      key={product_id}
-                      id={product_id}
-                      image={image_url}
-                      itemName={product_name}
-                      price={is_discount ? discount_price : original_price}
-                      isDiscount={is_discount}
-                      ogPrice={original_price}
-                      qty={state[index].quantity}
-                      weight={weight_value}
-                      weightType={weight_type_name}
-                    />
-                  ),
-                ) : null
-                }
+                {state.length === cartItems.length
+                  ? cartItems.map(
+                      (
+                        {
+                          product_id,
+                          discount_price,
+                          image_url,
+                          is_discount,
+                          original_price,
+                          product_name,
+                          weight_value,
+                          weight_type_name,
+                        },
+                        index,
+                      ) => (
+                        <FormItem
+                          key={product_id}
+                          id={product_id}
+                          image={image_url}
+                          itemName={product_name}
+                          price={is_discount ? discount_price : original_price}
+                          isDiscount={is_discount}
+                          ogPrice={original_price}
+                          qty={state[index].quantity}
+                          weight={weight_value}
+                          weightType={weight_type_name}
+                          dispatch={dispatch}
+                        />
+                      ),
+                    )
+                  : null}
               </div>
             )}
           </div>
@@ -198,7 +252,9 @@ const Form = () => {
           </div>
           <div className="order-summary-total-container">
             <h5 className="order-total-price">Order Total: </h5>
-            <h5 className="order-total-price">${orderSummary.finalTotal} CAD</h5>
+            <h5 className="order-total-price">
+              ${orderSummary.finalTotal} CAD
+            </h5>
           </div>
           <input
             type="submit"
@@ -207,8 +263,18 @@ const Form = () => {
           />
         </div>
       </div>
-    </form> : <div><Navbar /> <Summary inputs={inputs} cartItems={cartItems} cart={state} orderSummary={orderSummary} /></div>;
+    </form>
+  ) : (
+    <div>
+      <Navbar />{' '}
+      <Summary
+        inputs={inputs}
+        cartItems={cartItems}
+        cart={state}
+        orderSummary={orderSummary}
+      />
+    </div>
+  );
 };
 
 export default Form;
-
