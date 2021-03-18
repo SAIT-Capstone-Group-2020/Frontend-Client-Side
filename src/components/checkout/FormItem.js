@@ -25,8 +25,12 @@ const FormItem = ({
     e.preventDefault();
     removeFromCart(id, dispatch);
   };
+  
   const handleInput = e => {
     e.preventDefault();
+    if (e.keyCode === 13) {
+        return false;
+    }
     setInput(e.target.value);
     if (isDiscount) {
       setItemOgPrice(

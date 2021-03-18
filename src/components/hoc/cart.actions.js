@@ -64,3 +64,7 @@ export const updateQuatity = (id, quantity, dispatch) => {
     payload: { id, quantity },
   });
 };
+
+export const saveLocal = ({hhaSummary}) => {
+  localStorage.setItem('hhaSummary', JSON.stringify(hhaSummary));
+}
