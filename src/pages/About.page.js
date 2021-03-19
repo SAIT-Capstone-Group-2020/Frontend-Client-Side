@@ -2,14 +2,34 @@ import React, { useState } from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Footer from '../components/hoc/Footer';
-import { GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps';
+import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
 function Map() {
+	const [ selected, setSelected ] = useState(false);
 	return (
 		<GoogleMap defaultZoom={18} defaultCenter={{ lat: 51.03895, lng: -113.966949 }}>
 			<Marker
 				position={{ lat: 51.03895, lng: -113.966949 }}
+				onClick={() => {
+					setSelected(true);
+				}}
 			/>
+
+			{selected && (
+				<InfoWindow
+					position={{ lat: 51.03895, lng: -113.966949 }}
+					onCloseClick={() => {
+						setSelected(false);
+					}}
+				>
+					<div>
+						<h5>Hiep Hoa Asian Food Market</h5>
+						<p>Asian grocery store</p>
+						<p>Opens at 8:00 a.m. daily</p>
+						<p>In-store shopping, Curbside pickup, Delivery all available</p>
+					</div>
+				</InfoWindow>
+			)}
 		</GoogleMap>
 	);
 }
