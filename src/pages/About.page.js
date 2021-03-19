@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Footer from '../components/hoc/Footer';
-import { GoogleMap, withScriptjs, withGoogleMap} from 'react-google-maps';
+import { GoogleMap, withScriptjs, withGoogleMap, Marker} from 'react-google-maps';
 
 function Map() {
 	return (
 		<GoogleMap defaultZoom={18} defaultCenter={{ lat: 51.03895, lng: -113.966949 }}>
+			<Marker
+				position={{ lat: 51.03895, lng: -113.966949 }}
+			/>
 		</GoogleMap>
 	);
 }
