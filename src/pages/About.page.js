@@ -37,7 +37,7 @@ const About = () => {
 								because we already renovated!
 							</p>
 							<p id="w-node-_09ca36a5-fae4-bce6-3492-250869e6e75b-f19183dc" className="paragraph-light">
-								Same contents in Vietnamese: We are an Asian Food Market which you can find a tons of
+								Same contents in Vietnamese: We are an Asian Food Market which you can find a tons of
 								special items with reasonable prices. If you have been at Hiep Hoa Asian Food Market,
 								surely you will be surprised because we already renovated!
 							</p>

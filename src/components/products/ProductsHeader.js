@@ -1,21 +1,6 @@
 import React, { useState } from 'react';
 
 const ProductsHeader = ({ searchHandler }) => {
-  // const [searchValue, setSearchValue] = useState("");
-  
-  // const handleSearchInputChanges = (e) => {
-  //   setSearchValue(e.target.value);
-  // }
-
-  // const resetInputField = () => {
-  //   setSearchValue("")
-  // }
-
-  // const callSearchFunction = (e) => {
-  //   e.preventDefault();
-  //   props.search(searchValue);
-  //   resetInputField();
-  // }
   const handleSearchInputChange = e => {
     searchHandler(e.target.value);
   };
