@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Footer from '../components/hoc/Footer';
+import { GoogleMap, withScriptjs, withGoogleMap} from 'react-google-maps';
+
+function Map() {
+	return (
+		<GoogleMap defaultZoom={18} defaultCenter={{ lat: 51.03895, lng: -113.966949 }}>
+		</GoogleMap>
+	);
+}
+
+const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 const About = () => {
 	useScript('https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff6189ef3859a509a1e9dfe');
 	useScript('https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js');
-    useScript('https://res.cloudinary.com/hntzzmpn9/raw/upload/v1612562182/hha/webflow_slud7c.js');
-    
+	useScript('https://res.cloudinary.com/hntzzmpn9/raw/upload/v1612562182/hha/webflow_slud7c.js');
+
 	return (
 		<div>
 			<Navbar />
 			<div>
 				<div className="section cc-about-section">
 					<div className="intro-header" />
-					<div className="intro-content">
-						<div className="intro-text">
+					<div className="intro-content" >
+						<div className="intro-text" >
 							<div className="head-jumbo cc-intro-head-jumbo">
 								About Us<br />
 							</div>
@@ -37,7 +47,7 @@ const About = () => {
 								because we already renovated!
 							</p>
 							<p id="w-node-_09ca36a5-fae4-bce6-3492-250869e6e75b-f19183dc" className="paragraph-light">
-								Same contents in Vietnamese: We are an Asian Food Market which you can find a tons of
+								Same contents in Vietnamese: We are an Asian Food Market which you can find a tons of
 								special items with reasonable prices. If you have been at Hiep Hoa Asian Food Market,
 								surely you will be surprised because we already renovated!
 							</p>
@@ -45,12 +55,15 @@ const About = () => {
 					</div>
 					<div className="section cc-about-info-section">
 						<div className="about-page-info-wrap">
-							<div
-								data-widget-latlng="51.0385394,-113.9668252"
-								data-widget-zoom="11"
-								data-disable-scroll="1"
-								className="map w-widget w-widget-map"
-							/>
+							<div className="map">
+								<WrappedMap
+									googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBBQNPerX486ulYlsrNp3bafOSieTseunw`}
+									loadingElement={<div style={{ height: '100%' }} />}
+									containerElement={<div style={{ height: '100%' }} />}
+									mapElement={<div style={{ height: '100%' }} />}
+								/>
+							</div>
+
 							<div className="about-info-section">
 								<div className="w-layout-grid grid-main-info">
 									<div
@@ -95,7 +108,7 @@ const About = () => {
 									<div className="store-info-wrap">
 										<div className="paragraph-bigger cc-about-paragraph-bigger">Connect</div>
 										<a
-											href="https://www.instagram.com/hiep_hoa_asian_food_market/?hl=en"
+											href="https://www.instagram.com/hiephoaasianfoodmarket/"
 											target="_blank"
 											className="footer-link cc-contact-link"
 										>
