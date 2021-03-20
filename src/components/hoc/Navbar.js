@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
+import { Store } from '../hoc/Store';
 
 const Navbar = () => {
+  // ! Gain access to Context/Reducer
+  const { state, dispatch } = useContext(Store);
+
+  // const [numItems, setNumItems] = useState(state.length);
+  
+
+   
   return (
     <div
       data-collapse="medium"
@@ -37,7 +45,7 @@ const Navbar = () => {
             <button className="w-commerce-commercecartopenlink button cc-cart nav-btn w-inline-block">
               <div className="w-inline-block">Cart</div>
               <div className="w-commerce-commercecartopenlinkcount card-quantity">
-                0
+                {state.length}
               </div>
             </button>
             {/* <div
