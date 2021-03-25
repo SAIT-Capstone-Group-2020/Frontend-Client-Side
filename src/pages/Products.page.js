@@ -17,7 +17,7 @@ function Products() {
 	useEffect(() => {
 		setLoading(true);
 		axios
-			.get('https://hha-capstone.herokuapp.com/api/customer/search?cate=fruit&sort=discount_price:desc')
+			.get('https://hha-capstone.herokuapp.com/api/customer/search?cate=meat')
 			.then((res) => {
 				setProducts(res.data.content);
 				setLoading(false);
