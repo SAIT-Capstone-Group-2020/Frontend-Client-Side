@@ -186,7 +186,7 @@ const Form = () => {
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        {/* <button onClick={testAdd}>Add Item</button> */}
+        <button onClick={testAdd}>Add Item</button>
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
