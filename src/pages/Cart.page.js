@@ -9,8 +9,8 @@ import FormItem from '../components/checkout/FormItem';
 
 const Cart = () => {
 	const { state, dispatch } = useContext(Store);
-	const [inputs, setInputs] = useState({});
-	const [subTotal, setSubTotal] = useState((0).toFixed(2));
+	const [ inputs, setInputs ] = useState({});
+	const [ subTotal, setSubTotal ] = useState((0).toFixed(2));
 	const [ cartItems, setCartItems ] = useState();
 	const [ loading, setLoading ] = useState(true);
 
@@ -22,7 +22,16 @@ const Cart = () => {
 		() => {
 			if (cartItems) {
 				if (state.length === cartItems.length && state.length !== 0) {
-					
+					let total = 0;
+					state.forEach((item, index) => {
+						if (cartItems[index].is_discount) {
+							total += cartItems[index].discount_price * item.quantity;
+						}
+						else {
+							total += cartItems[index].original_price * item.quantity;
+						}
+					});
+					setSubTotal(total.toFixed(2));
 				}
 
 				setLoading(false);
