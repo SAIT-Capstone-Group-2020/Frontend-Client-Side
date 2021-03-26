@@ -37,9 +37,9 @@ const Form = () => {
         const gst = total * 0.05;
         const finalTotal = total + gst;
         setOrderSummary({
-          total: (Math.round(total * 100) / 100).toFixed(2),
-          gst: (Math.round(gst * 100) / 100).toFixed(2),
-          finalTotal: (Math.round(finalTotal * 100) / 100).toFixed(2),
+          total: ((total * 100) / 100).toFixed(2),
+          gst: ((gst * 100) / 100).toFixed(2),
+          finalTotal: ((finalTotal * 100) / 100).toFixed(2),
         });
       } else if (state.length === 0) {
         setOrderSummary({
@@ -80,13 +80,6 @@ const Form = () => {
   });
   // ! Grabs cart item info from API of items in state
   useGetCart(state, url, setCartItems);
-
-  // ! Tests / demo how to use the cart.actions
-  const testAdd = e => {
-    e.preventDefault();
-    addToCart(1, 3, dispatch);
-    // addToCart(41, 1, dispatch);
-  };
 
   const handleChange = e => {
     const name = e.target.name;
@@ -186,7 +179,6 @@ const Form = () => {
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        {/* <button onClick={testAdd}>Add Item</button> */}
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
