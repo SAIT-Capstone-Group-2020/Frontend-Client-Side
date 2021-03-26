@@ -14,10 +14,10 @@ const FormItem = ({
   ogPrice,
 }) => {
   const [itemPrice, setItemPrice] = useState(
-    (Math.round(price * qty * 100) / 100).toFixed(2),
+    ((price * qty * 100) / 100).toFixed(2),
   );
   const [itemOgPrice, setItemOgPrice] = useState(
-    (Math.round(ogPrice * qty * 100) / 100).toFixed(2),
+    ((ogPrice * qty * 100) / 100).toFixed(2),
   );
 
   const [input, setInput] = useState(qty);
@@ -34,10 +34,10 @@ const FormItem = ({
     setInput(e.target.value);
     if (isDiscount) {
       setItemOgPrice(
-        (Math.round(ogPrice * e.target.value * 100) / 100).toFixed(2),
+        ((ogPrice * e.target.value * 100) / 100).toFixed(2),
       );
     }
-    setItemPrice((Math.round(price * e.target.value * 100) / 100).toFixed(2));
+    setItemPrice(((price * e.target.value * 100) / 100).toFixed(2));
     updateQuatity(id, e.target.value, dispatch);
   };
   return (

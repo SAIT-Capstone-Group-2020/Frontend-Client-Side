@@ -37,9 +37,9 @@ const Form = () => {
         const gst = total * 0.05;
         const finalTotal = total + gst;
         setOrderSummary({
-          total: (Math.round(total * 100) / 100).toFixed(2),
-          gst: (Math.round(gst * 100) / 100).toFixed(2),
-          finalTotal: (Math.round(finalTotal * 100) / 100).toFixed(2),
+          total: ((total * 100) / 100).toFixed(2),
+          gst: ((gst * 100) / 100).toFixed(2),
+          finalTotal: ((finalTotal * 100) / 100).toFixed(2),
         });
       } else if (state.length === 0) {
         setOrderSummary({
