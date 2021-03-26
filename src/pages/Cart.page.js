@@ -56,7 +56,7 @@ const Cart = () => {
 						<div className="w-commerce-commercecartheader cart-header">
 							<h4 className="head-jumbo-tiny">your cart</h4>
 							<a href="#" className="w-commerce-commercecartcloselink close-button w-inline-block">
-								<img src="images/close-icon.svg" width="16" alt="" className="icon" />
+								<img src="https://res.cloudinary.com/hsse18xji/image/upload/v1612155757/HHA/images/close-icon_lsdnor.svg" width="16" alt="" className="icon" />
 							</a>
 						</div>
 						<div className="w-commerce-commercecartformwrapper cart-form-wrapper">
@@ -115,7 +115,7 @@ const Cart = () => {
 										<div className="w-commerce-commercecartlineitem cart-item-total">
 											<div>Subtotal</div>
 											<div className="w-commerce-commercecartordervalue paragraph-bigger cart-item-total-price">
-												{subTotal} CAD
+												${subTotal} CAD
 											</div>
 										</div>
 										<a
