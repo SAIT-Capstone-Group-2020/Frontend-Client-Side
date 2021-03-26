@@ -81,13 +81,6 @@ const Form = () => {
   // ! Grabs cart item info from API of items in state
   useGetCart(state, url, setCartItems);
 
-  // ! Tests / demo how to use the cart.actions
-  const testAdd = e => {
-    e.preventDefault();
-    addToCart(1, 3, dispatch);
-    // addToCart(41, 1, dispatch);
-  };
-
   const handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
@@ -186,7 +179,6 @@ const Form = () => {
         <a href="/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
-        <button onClick={testAdd}>Add Item</button>
         <h1 className="order-summary-main-header">Review Your Order</h1>
         <div className="order-summary-items-wrap">
           <h3 className="order-summary-header">Items in Order</h3>
