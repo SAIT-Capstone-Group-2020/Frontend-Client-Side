@@ -18,13 +18,13 @@ const SortDropdown = ({ sortHandler }) => {
 					<nav className="product-filter-dropdown-list w-dropdown-list">
 						{/* <a href="#" className="product-list-filter-option w-dropdown-link">Sort by latest</a> */}
 						<Link
-							to={{ pathname: '/products', state: { sort: 'asc' } }}
+							to={{ pathname: '/#/products', state: { sort: 'asc' } }}
 							className="product-list-filter-option w-dropdown-link"
 						>
 							Sort by price: low to high
 						</Link>
 						<Link
-							to={{ pathname: '/products', state: { sort: 'desc' } }}
+							to={{ pathname: '/#/products', state: { sort: 'desc' } }}
 							className="product-list-filter-option w-dropdown-link"
 						>
 							Sort by price: high to low

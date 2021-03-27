@@ -16,7 +16,7 @@ const ProductsHeader = ({ searchHandler }) => {
         <div className="category-link-list-wrapper cc-heading-category">
           <div className="category-link-list-wrap cc-category-list cc-heading-category">
             <div className="category-link-wrapper cc-heading-category">
-              <a href="/products" aria-current="page" className="category-link cc-heading-category w--current">All Products</a>
+              <a href="/#/products" aria-current="page" className="category-link cc-heading-category w--current">All Products</a>
             </div>
             <div className="category-link-wrapper cc-heading-category">
               <a href="#" className="category-link cc-heading-category">fruits &amp; vegetables</a>
