@@ -16,6 +16,10 @@ function Products() {
 	const [ loading, setLoading ] = useState(false);
 	let location = useLocation();
 
+	// since the initial load is undefined, reload and it shoud show up
+	if(!location.state) {
+    window.location.reload();
+	}
 	if (location.state.sort) {
 		localStorage.setItem('sortInput', location.state.sort);
 	}
