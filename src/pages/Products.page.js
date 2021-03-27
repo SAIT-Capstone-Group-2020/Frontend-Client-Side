@@ -70,7 +70,7 @@ function Products() {
 							{(searchValue === '' ? products : updateProducts).map((product) => (
 								<div class="product" key={product.product_name}>
 									<a
-										href={`/product/${product.product_id}`}
+										href={`/#/product/${product.product_id}`}
 										class="product-thumbnail-link w-inline-block"
 									>
 										<div
@@ -85,7 +85,7 @@ function Products() {
 										</div>
 									</a>
 									<a
-										href={`/product/${product.product_id}`}
+										href={`/#/product/${product.product_id}`}
 										class="product-thumbnail-button-link w-inline-block"
 									>
 										<h6 class="product-thumbnail-button-text">read more</h6>
