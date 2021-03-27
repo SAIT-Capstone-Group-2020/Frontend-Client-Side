@@ -119,7 +119,7 @@ const Cart = ({handleCartButton}) => {
 											</div>
 										</div>
 										<a
-											href="/checkout"
+											href="/#/checkout"
 											value="Continue to Checkout"
 											className="w-commerce-commercecartcheckoutbutton button cc-cart-button"
 										>
