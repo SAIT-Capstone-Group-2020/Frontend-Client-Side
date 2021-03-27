@@ -39,7 +39,7 @@ const Navbar = () => {
             >
               Home
             </a>
-             <Link to={{ pathname: '/product', state: { category: 'meat', sort: 'asc'} }} className="nav-item w-nav-link">
+             <Link to={{ pathname: '/products', state: { category: 'meat', sort: 'asc'} }} className="nav-item w-nav-link">
               Products
             </Link>
             <a href="/#/about" className="nav-item w-nav-link">
