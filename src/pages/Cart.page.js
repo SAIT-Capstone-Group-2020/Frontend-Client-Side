@@ -7,7 +7,7 @@ import { removeFromCart, updateQuatity } from '../components/hoc/cart.actions';
 import CartItem from '../components/hoc/CartItem';
 import FormItem from '../components/checkout/FormItem';
 
-const Cart = () => {
+const Cart = ({handleCartButton}) => {
 	const { state, dispatch } = useContext(Store);
 	const [ inputs, setInputs ] = useState({});
 	const [ subTotal, setSubTotal ] = useState((0).toFixed(2));
@@ -55,7 +55,7 @@ const Cart = () => {
 					<div className="w-commerce-commercecartcontainer cart-container">
 						<div className="w-commerce-commercecartheader cart-header">
 							<h4 className="head-jumbo-tiny">your cart</h4>
-							<a href="#" className="w-commerce-commercecartcloselink close-button w-inline-block">
+							<a onClick={handleCartButton} href="#" className="w-commerce-commercecartcloselink close-button w-inline-block">
 								<img src="https://res.cloudinary.com/hsse18xji/image/upload/v1612155757/HHA/images/close-icon_lsdnor.svg" width="16" alt="" className="icon" />
 							</a>
 						</div>

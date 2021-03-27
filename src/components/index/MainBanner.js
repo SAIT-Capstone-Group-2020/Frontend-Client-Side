@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Slide from './Slide';
 import Slider from './Slider';
 
@@ -36,7 +35,5 @@ const MainBanner = () => {
     </div>
   );
 };
-
-MainBanner.propTypes = {};
 
 export default MainBanner;
