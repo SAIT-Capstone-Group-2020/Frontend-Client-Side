@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer-container">
       <div className="w-layout-grid footer">
         <div className="footer-div">
-          <a href="/" className="nav-logo-link w-inline-block">
+          <a href="/#" className="nav-logo-link w-inline-block">
           <div style={{"width": "100px","height": "100px"}}></div>
           </a>
         </div>

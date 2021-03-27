@@ -176,7 +176,7 @@ const Form = () => {
     >
       {errorMsg.length > 0 ? <Alert msg={errorMsg} /> : null}
       <div className="order-details-wrapper">
-        <a href="/products" className="button general-button back-btn w-button">
+        <a href="/#/products" className="button general-button back-btn w-button">
           Continue Shopping
         </a>
         <h1 className="order-summary-main-header">Review Your Order</h1>
