@@ -23,7 +23,7 @@ const Navbar = () => {
     >
       <div className="nav-items">
         <a
-          href="/"
+          href="/#"
           aria-current="page"
           className="w-nav-brand w--current"
         >
@@ -32,16 +32,16 @@ const Navbar = () => {
         <div className="nav-wrap">
           <nav role="navigation" className="nav-items w-nav-menu">
             <a
-              href="/"
+              href="/#"
               aria-current="page"
               className="nav-item w-nav-link w--current"
             >
               Home
             </a>
-            <a href="/products" className="nav-item w-nav-link">
+            <a href="/#/products" className="nav-item w-nav-link">
               Products
             </a>
-            <a href="/about" className="nav-item w-nav-link">
+            <a href="/#/about" className="nav-item w-nav-link">
               About
             </a>
           </nav>

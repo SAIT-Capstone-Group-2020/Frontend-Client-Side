@@ -11,7 +11,7 @@ const FeaturedSlide = ({ styleName, left, image }) => {
     <div className="slide featured-slide w-slide">
       {left ? (
         <div className="featured-slide-wrap">
-          <a href="/404" className={styleName}>
+          <a href="/#/404" className={styleName}>
             <div className="featured-header-wrap">
               <h1 className="featured-header first-lang">Spaghetti</h1>
             </div>
@@ -24,7 +24,7 @@ const FeaturedSlide = ({ styleName, left, image }) => {
       ) : (
         <div className="featured-slide-wrap">
           {featureImage}
-          <a href="/404" className={styleName}>
+          <a href="/#/404" className={styleName}>
             <div className="featured-header-wrap">
               <div className="featured-header-wrap">
                 <h1 className="featured-header first-lang">Spaghetti</h1>

@@ -4,7 +4,7 @@ const NewItem = ({ id, image, itemName, price, isDiscount, ogPrice }) => {
   return (
     <div className="collection-item main-collection-item grid-collection-item">
       <a
-        href={`/product/${id}`}
+        href={`/#/product/${id}`}
         className="product-image-home main-product-image-grid-home w-inline-block"
         style={{ backgroundImage: `url(${image})` }}
       >
