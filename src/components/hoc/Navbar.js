@@ -1,4 +1,5 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Cart from '../../pages/Cart.page';
 import { Store } from '../hoc/Store';
 
@@ -38,9 +39,9 @@ const Navbar = () => {
             >
               Home
             </a>
-            <a href="/#/products" className="nav-item w-nav-link">
+             <Link to={{ pathname: '/products', state: { category: 'meat', sort: 'asc'} }} className="nav-item w-nav-link">
               Products
-            </a>
+            </Link>
             <a href="/#/about" className="nav-item w-nav-link">
               About
             </a>

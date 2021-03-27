@@ -11,7 +11,7 @@ import { StoreProvider } from './components/hoc/Store';
 ReactDOM.render(
   <React.StrictMode>
   <StoreProvider>
-      <Router forceRefresh basename="/#">
+      <Router forceRefresh>
           <App />
       </Router>
   </StoreProvider>

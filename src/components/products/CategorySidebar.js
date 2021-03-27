@@ -1,53 +1,71 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const CategorySidebar = ({ categoryHandler }) => {
-  const handleCategoryChange = e => {
-    categoryHandler(e.target.value);
-  };
-
-  return (
-    <div className="store-heading-categories-wrap">
-      <div className="category-link-list-wrapper">
-        <div className="category-link-list-wrap cc-category-list">
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="/products" aria-current="page" className="category-link w--current">All Products</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" onClick={handleCategoryChange} className="category-link" data-value="fruit">fruits &amp; vegetables</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="https://hha-capstone.herokuapp.com/api/customer/search?cate=meat" className="category-link">meat</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" className="category-link">seafood</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" className="category-link">dairy &amp; frozen</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" className="category-link">snacks</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" className="category-link">food essentials</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-          <div className="category-link-wrapper">
-            <a href="#" className="category-link">beauty &amp; household</a>
-          </div>
-          <div className="divider cc-product-category-divider"></div>
-        </div>
-      </div>
-    </div>
-  );
+const CategorySidebar = () => {
+	return (
+		<div className="store-heading-categories-wrap">
+			<div className="category-link-list-wrapper">
+				<div className="category-link-list-wrap cc-category-list">
+					{/* <div className="divider cc-product-category-divider" /> */}
+					{/* <div className="category-link-wrapper"> */}
+					{/* <Link
+							to={{ pathname: '/products', state: { category: '' } }}
+							aria-current="page"
+							className="category-link w--current"
+						>
+							all products
+						</Link> */}
+					{/* </div> */}
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'meat' } }} className="category-link">
+							meat
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'fruit' } }} className="category-link">
+							fruit &amp; vegetables
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'seafood' } }} className="category-link">
+							seafood
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'frozen' } }} className="category-link">
+							dairy &amp; frozen
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'snack' } }} className="category-link">
+							snacks
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link
+							to={{ pathname: '/products', state: { category: 'food essentials' } }}
+							className="category-link"
+						>
+							food essentials
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+					<div className="category-link-wrapper">
+						<Link to={{ pathname: '/products', state: { category: 'beauty' } }} className="category-link">
+							beauty &amp; household
+						</Link>
+					</div>
+					<div className="divider cc-product-category-divider" />
+				</div>
+			</div>
+		</div>
+	);
 };
-
-CategorySidebar.propTypes = {};
 
 export default CategorySidebar;
