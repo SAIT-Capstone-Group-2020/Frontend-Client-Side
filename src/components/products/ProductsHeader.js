@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductsHeader = ({ searchHandler }) => {
   const handleSearchInputChange = e => {
@@ -15,29 +16,46 @@ const ProductsHeader = ({ searchHandler }) => {
       <div className="store-heading-categories-wrap cc-heading-category">
         <div className="category-link-list-wrapper cc-heading-category">
           <div className="category-link-list-wrap cc-category-list cc-heading-category">
-            <div className="category-link-wrapper cc-heading-category">
+            {/* <div className="category-link-wrapper cc-heading-category">
               <a href="/#/products" aria-current="page" className="category-link cc-heading-category w--current">All Products</a>
+            </div> */}
+            <div className="category-link-wrapper cc-heading-category">
+              <Link to={{ pathname: '/products', state: { category: 'meat'} }} className="category-link cc-heading-category">
+							meat
+						</Link>
+            </div>
+              <div className="category-link-wrapper cc-heading-category">
+                <Link to={{ pathname: '/products', state: { category: 'fruit'} }} className="category-link cc-heading-category">
+							fruit &amp; vegetables
+						</Link>
             </div>
             <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">fruits &amp; vegetables</a>
+              <Link to={{ pathname: '/products', state: { category: 'seafood'} }} className="category-link cc-heading-category">
+							seafood
+						</Link>
             </div>
             <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">meat</a>
+              <Link to={{ pathname: '/products', state: { category: 'frozen'} }} className="category-link cc-heading-category">
+							dairy &amp; frozen
+						</Link>
             </div>
             <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">seafood</a>
+              <Link to={{ pathname: '/products', state: { category: 'snack'} }} className="category-link cc-heading-category">
+							snacks
+						</Link>
             </div>
             <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">dairy &amp; frozen</a>
+              <Link
+							to={{ pathname: '/products', state: { category: 'food essentials'} }}
+							className="category-link cc-heading-category"
+						>
+							food essentials
+						</Link>
             </div>
             <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">snacks</a>
-            </div>
-            <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">food essentials</a>
-            </div>
-            <div className="category-link-wrapper cc-heading-category">
-              <a href="#" className="category-link cc-heading-category">beauty &amp; household</a>
+              <Link to={{ pathname: '/products', state: { category: 'beauty'} }} className="category-link cc-heading-category">
+							beauty &amp; household
+						</Link>
             </div>
           </div>
         </div>
