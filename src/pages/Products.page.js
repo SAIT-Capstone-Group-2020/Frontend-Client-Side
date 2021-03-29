@@ -18,8 +18,9 @@ function Products() {
 
 	// since the initial load is undefined, reload and it shoud show up
 	if(!location.state) {
-    window.location.reload();
+    document.location.reload();
 	}
+	
 	if (location.state.sort) {
 		localStorage.setItem('sortInput', location.state.sort);
 	}
