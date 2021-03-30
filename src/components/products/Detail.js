@@ -19,7 +19,12 @@ const Detail = () => {
     if (e.keyCode === 13) {
         return false;
     }
-    addToCart(productId, input, dispatch);
+    // id needs to be saved as an int
+    const id = parseInt(productId);
+    // check if id !== null and is a number. Don't want to add an invalid product id to cart
+    if(id && typeof id === 'number') {
+      addToCart(id, input, dispatch);
+    }
   };
 
   useEffect(() => {

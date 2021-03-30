@@ -26,7 +26,6 @@ const cartReducer = (state = ini_state, { type, payload }) => {
       localStorage.setItem('hhaCart', JSON.stringify(clearCart));
       return clearCart;
     case REMOVE_FROM_CART:
-      // Returns array of items that do not have that id
       const removeCart = state.filter(({ id }) => id !== payload);
       localStorage.setItem('hhaCart', JSON.stringify(removeCart));
       return removeCart;
