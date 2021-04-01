@@ -80,7 +80,7 @@ const About = () => {
 						<div className="about-page-info-wrap">
 							<div className="map">
 								<WrappedMap
-									googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyBBQNPerX486ulYlsrNp3bafOSieTseunw`}
+									googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyB0Q8XSs7iMnotLp-Tn3Z0EKe0NM8iHYAI`}
 									loadingElement={<div style={{ height: '100%' }} />}
 									containerElement={<div style={{ height: '100%' }} />}
 									mapElement={<div style={{ height: '100%' }} />}
