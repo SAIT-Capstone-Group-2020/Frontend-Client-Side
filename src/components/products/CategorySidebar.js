@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const CategorySidebar = () => {
-	const handleClick = e => {
+	const handleCategoryClick = (e) => {
 		localStorage.setItem('categoryInput', e.target.innerText);
 		document.location.reload();
-	}
-	
+	};
+
 	return (
 		<div className="store-heading-categories-wrap">
 			<div className="category-link-list-wrapper">
@@ -14,7 +13,7 @@ const CategorySidebar = () => {
 					{/* <div className="divider cc-product-category-divider" /> */}
 					{/* <div className="category-link-wrapper"> */}
 					{/* <Link
-							to={{ pathname: '#//products', state: { category: '' } }}
+							to={{ pathname: '/#/products', state: { category: '' } }}
 							aria-current="page"
 							className="category-link w--current"
 						>
@@ -29,45 +28,45 @@ const CategorySidebar = () => {
 						{/* <Link to={{ pathname: '/products', state: { category: 'meat'} }} className="category-link">
 							meat
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              meat
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							meat
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
 						{/* <Link to={{ pathname: '/products', state: { category: 'fruit'} }} className="category-link">
 							fruit &amp; vegetables
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              fruit
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							fruit
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
 						{/* <Link to={{ pathname: '/products', state: { category: 'seafood'} }} className="category-link">
 							seafood
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              seafood
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							seafood
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
 						{/* <Link to={{ pathname: '/products', state: { category: 'frozen'} }} className="category-link">
 							dairy &amp; frozen
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              frozen
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							frozen
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
 						{/* <Link to={{ pathname: '/products', state: { category: 'snack'} }} className="category-link">
 							snacks
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              snack
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							snack
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
@@ -77,18 +76,18 @@ const CategorySidebar = () => {
 						>
 							food essentials
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              dairy
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							dairy
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 					<div className="category-link-wrapper">
 						{/* <Link to={{ pathname: '/products', state: { category: 'beauty'} }} className="category-link">
 							beauty &amp; household
 						</Link> */}
-						<a href="/#/products" onClick={ handleClick } className="category-link">
-              beauty & household
-            </a>
+						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
+							beauty & household
+						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
 				</div>

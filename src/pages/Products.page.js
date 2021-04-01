@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
@@ -14,7 +14,7 @@ function Products() {
 	const [ searchValue, setSearchValue ] = useState('');
 	const [ sortValue, setSortValue ] = useState('');
 	const [ loading, setLoading ] = useState(false);
-	let location = useLocation();
+	// let location = useLocation();
 
 	
 	// since the initial load is undefined, reload and it shoud show up
@@ -58,10 +58,6 @@ function Products() {
 		setSearchValue(value);
 	};
 
-	const sortHandler = (value) => {
-		setSortValue(value);
-	};
-
 	let updateProducts = products.filter((item) => {
 		return item.product_name.toLowerCase().includes(searchValue);
 	}, []);
@@ -77,7 +73,7 @@ function Products() {
 			<div class="product-list-section cc-product-list-section">
 				<CategorySidebar />
 				<div class="product-list-elements-wrapper">
-					<SortDropdown sortHandler={sortHandler} />
+					<SortDropdown />
 					<div class="product-list-wrapper">
 						<div class="product-list-wrap">
 							{(searchValue === '' ? products : updateProducts).map((product) => (
