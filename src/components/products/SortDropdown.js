@@ -1,10 +1,16 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-const SortDropdown = ({ sortHandler }) => {
-	const handleSortChange = (e) => {
-		sortHandler(e.target.value);
+const SortDropdown = () => {
+	const handleSortClick = (e) => {
+		if (e.target.innerText == 'Sort by price: low to high') {
+			localStorage.setItem('sortInput', 'asc');
+		}
+		else if (e.target.innerText == 'Sort by price: high to low') {
+			localStorage.setItem('sortInput', 'desc');
+		}
+
+		document.location.reload();
 	};
 
 	return (
@@ -17,7 +23,7 @@ const SortDropdown = ({ sortHandler }) => {
 					</div>
 					<nav className="product-filter-dropdown-list w-dropdown-list">
 						{/* <a href="#" className="product-list-filter-option w-dropdown-link">Sort by latest</a> */}
-						<Link
+						{/* <Link
 							to={{ pathname: '/products', state: { sort: 'asc' } }}
 							className="product-list-filter-option w-dropdown-link"
 						>
@@ -28,7 +34,21 @@ const SortDropdown = ({ sortHandler }) => {
 							className="product-list-filter-option w-dropdown-link"
 						>
 							Sort by price: high to low
-						</Link>
+						</Link> */}
+						<a
+							href="/#/products"
+							onClick={handleSortClick}
+							className="product-list-filter-option w-dropdown-link"
+						>
+							Sort by price: low to high
+						</a>
+						<a
+							href="/#/products"
+							onClick={handleSortClick}
+							className="product-list-filter-option w-dropdown-link"
+						>
+							Sort by price: high to low
+						</a>
 					</nav>
 				</div>
 			</div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
@@ -12,22 +11,27 @@ import Footer from '../components/hoc/Footer';
 function Products() {
 	const [ products, setProducts ] = useState([]);
 	const [ searchValue, setSearchValue ] = useState('');
-	const [ sortValue, setSortValue ] = useState('');
 	const [ loading, setLoading ] = useState(false);
-	let location = useLocation();
+	// let location = useLocation();
 
 	// since the initial load is undefined, reload and it shoud show up
-	if(!location.state) {
-    document.location.reload();
-	}
+	// if(!location.state) {
+    // document.location.reload();
+	// }
 	
-	if (location.state.sort) {
-		localStorage.setItem('sortInput', location.state.sort);
-	}
+	// if (location.state.sort) {
+	// 	localStorage.setItem('sortInput', location.state.sort);
+	// }
 
-	if (location.state.category) {
-		localStorage.setItem('categoryInput', location.state.category);
-	}
+	// if (location.state.category) {
+	// 	localStorage.setItem('categoryInput', location.state.category);
+	// }
+
+	// localStorage.setItem('sortInput', localStorage.getItem('sortInput'));
+
+	// localStorage.setItem('categoryInput', localStorage.getItem(
+	// 				'categoryInput'
+	// 			));
 
 	useEffect(() => {
 		setLoading(true);
@@ -40,6 +44,7 @@ function Products() {
 			.then((res) => {
 				setProducts(res.data.content);
 				setLoading(false);
+				
 			})
 			.catch((err) => {
 				console.log(err);
@@ -48,10 +53,6 @@ function Products() {
 
 	const searchHandler = (value) => {
 		setSearchValue(value);
-	};
-
-	const sortHandler = (value) => {
-		setSortValue(value);
 	};
 
 	let updateProducts = products.filter((item) => {
@@ -69,7 +70,7 @@ function Products() {
 			<div class="product-list-section cc-product-list-section">
 				<CategorySidebar />
 				<div class="product-list-elements-wrapper">
-					<SortDropdown sortHandler={sortHandler} />
+					<SortDropdown />
 					<div class="product-list-wrapper">
 						<div class="product-list-wrap">
 							{(searchValue === '' ? products : updateProducts).map((product) => (
