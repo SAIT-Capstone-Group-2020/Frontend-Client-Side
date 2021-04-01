@@ -13,6 +13,11 @@ const Navbar = () => {
     e.preventDefault();
     setCartOpen(!cartOpen);
   }
+
+  const handleClick = e => {
+    localStorage.setItem('sortInput', "asc");
+    localStorage.setItem('categoryInput', "meat");
+  }
    
   return (
     <div
@@ -39,9 +44,13 @@ const Navbar = () => {
             >
               Home
             </a>
-             <Link to={{ pathname: '/products', state: { category: 'meat', sort: 'asc'} }} className="nav-item w-nav-link">
-              Products
-            </Link>
+             {/* <button to={{ pathname: '/products', state: { category: 'meat', sort: 'asc'} }} className="nav-item w-nav-link">
+              <button>Products</button>
+            </button> */}
+
+            <a href="/#/products" onClick={ handleClick } className="nav-item w-nav-link">
+              Click me products
+            </a>
             <a href="/#/about" className="nav-item w-nav-link">
               About
             </a>
