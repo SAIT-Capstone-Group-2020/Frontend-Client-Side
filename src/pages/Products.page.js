@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import useScript from '../utils/useScript.hook';
 import Navbar from '../components/hoc/Navbar';
@@ -12,11 +11,9 @@ import Footer from '../components/hoc/Footer';
 function Products() {
 	const [ products, setProducts ] = useState([]);
 	const [ searchValue, setSearchValue ] = useState('');
-	const [ sortValue, setSortValue ] = useState('');
 	const [ loading, setLoading ] = useState(false);
 	// let location = useLocation();
 
-	
 	// since the initial load is undefined, reload and it shoud show up
 	// if(!location.state) {
     // document.location.reload();

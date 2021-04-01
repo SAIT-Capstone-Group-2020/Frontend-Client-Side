@@ -86,7 +86,7 @@ const CategorySidebar = () => {
 							beauty &amp; household
 						</Link> */}
 						<a href="/#/products" onClick={handleCategoryClick} className="category-link">
-							beauty & household
+							beauty &amp; household
 						</a>
 					</div>
 					<div className="divider cc-product-category-divider" />
