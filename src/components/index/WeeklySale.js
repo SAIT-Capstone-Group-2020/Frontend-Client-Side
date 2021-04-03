@@ -11,7 +11,7 @@ const WeeklySale = () => {
     }
   }, [saleImage]);
   useFetch(
-    'https://hha-merge.herokuapp.com/api/v2/ui/allbanner_tf2',
+    'https://hha-capstone.herokuapp.com/api/v2/ui/allbanner',
     setSaleImage,
   );
   return (
