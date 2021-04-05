@@ -8,7 +8,7 @@ const useScript = url => {
     script.type = 'text/javascript';
     script.className = "useScript"
     script.src = url;
-    script.async = true;
+    script.defer = true;
 
     document.body.appendChild(script);
 
