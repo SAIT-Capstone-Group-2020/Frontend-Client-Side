@@ -1,20 +1,20 @@
+// import node_modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+// import local scripts
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './components/hoc/Store';
 
-// ! Replace Provider with storeProvider later
-
 ReactDOM.render(
   <React.StrictMode>
-  <StoreProvider>
+    <StoreProvider>
       <Router forceRefresh basename="/#">
-          <App />
+        <App />
       </Router>
-  </StoreProvider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

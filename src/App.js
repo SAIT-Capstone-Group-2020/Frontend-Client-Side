@@ -1,10 +1,12 @@
+// import node_modules
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+// import local scripts
 import Home from './pages/Home.page';
 import Products from './pages/Products.page';
 import ProductDetail from './pages/ProductDetail.page';
 import Cart from './pages/Cart.page';
-import NotFound from './pages/NotFound.page'
+import NotFound from './pages/NotFound.page';
 import CheckoutForm from './pages/CheckoutForm.page';
 import CheckoutSummary from './pages/CheckoutSummary.page';
 import About from './pages/About.page';
