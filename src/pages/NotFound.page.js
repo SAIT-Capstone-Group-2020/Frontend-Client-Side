@@ -1,10 +1,14 @@
+// import node_modules
 import React from 'react';
+// import local scripts
 import Navbar from '../components/hoc/Navbar';
 import useScript from '../utils/useScript.hook';
 import Slide from '../components/index/Slide';
 import Slider from '../components/index/Slider';
 
+// NotFound Page Component
 const NotFound = () => {
+  // call useScript hook
   useScript(
     'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff4fd881cc2cd35ee68ff88',
   );
@@ -51,4 +55,5 @@ const NotFound = () => {
   );
 };
 
+// export default
 export default NotFound;
