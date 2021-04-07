@@ -1,6 +1,12 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Slider settings of the Featured Section
+ * @param param0 Passed from Featured
+ * @returns FeaturedSlider component jsx
+ */
 const FeaturedSlider = ({ styleName, children }) => {
+  // jsx
   return (
     <div
       data-delay="5000"
@@ -17,4 +23,5 @@ const FeaturedSlider = ({ styleName, children }) => {
   );
 };
 
+// default export
 export default FeaturedSlider;

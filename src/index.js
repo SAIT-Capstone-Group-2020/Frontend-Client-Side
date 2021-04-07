@@ -3,11 +3,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 // import local scripts
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './components/hoc/Store';
+// css
+import './index.css';
 
+// Replace the div with the id=root with web app
 ReactDOM.render(
   <React.StrictMode>
     <StoreProvider>

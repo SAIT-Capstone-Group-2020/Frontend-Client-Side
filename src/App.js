@@ -10,10 +10,16 @@ import NotFound from './pages/NotFound.page';
 import CheckoutForm from './pages/CheckoutForm.page';
 import CheckoutSummary from './pages/CheckoutSummary.page';
 import About from './pages/About.page';
+// css
 import './doc.css';
 import './kim.css';
 
+/**
+ * This component returns the endpoints and pages for the web app
+ * @returns App page jsx and routes
+ */
 function App() {
+  // jsx
   return (
     <Switch>
       <Route exact path="/" component={Home} />
@@ -28,4 +34,5 @@ function App() {
   );
 }
 
+// default export
 export default App;

@@ -6,7 +6,10 @@ import Footer from '../components/hoc/Footer';
 import Navbar from '../components/hoc/Navbar';
 import Summary from '../components/checkout/Summary';
 
-// CheckoutSummary Page Component
+/**
+ * This function returns the jsx for the /checkout/summary endpoint
+ * @returns CheckoutSummary Page container jsx
+ */
 const CheckoutSummary = () => {
   // call useScript hook
   useScript(
@@ -15,6 +18,7 @@ const CheckoutSummary = () => {
   useScript(
     'https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js',
   );
+  // jsx
   return (
     <div>
       <Navbar />

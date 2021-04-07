@@ -1,7 +1,10 @@
 // import node_modules
 import { useEffect } from 'react';
 
-// this function loads a script tag into the body. Used for hamburger menu, drop down, and slider functionalities
+/**
+ * This function loads a script tag into the body. Used for hamburger menu, drop down, and slider functionalities
+ * @param url of external script
+ */
 const useScript = url => {
   // useEffect is called whenever the component is mounted
   useEffect(() => {
@@ -27,7 +30,10 @@ const useScript = url => {
   }, [url]);
 };
 
-// This function removes the script from the document if it is already in the body
+/**
+ * This function removes the script from the document if it is already in the body.
+ * @param url of script
+ */
 const removeScript = url => {
   // gets all the scripts with the className = useScript
   const scripts = document.getElementsByClassName('useScript');

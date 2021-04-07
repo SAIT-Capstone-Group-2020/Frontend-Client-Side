@@ -1,6 +1,11 @@
 import React from 'react';
 
-const SummaryInfo = ({inputs: {name, email, phone, date}}) => {
+/**
+ * This function returns the jsx of the Summary Info from the Summary Section
+ * @param param0 Passed from the Summary
+ * @returns SummaryInfo component jsx
+ */
+const SummaryInfo = ({ inputs: { name, email, phone, date } }) => {
   return (
     <div className="order-sum-payment-wrap">
       <h3 className="order-summary-header">Payment Info</h3>
@@ -15,4 +20,6 @@ const SummaryInfo = ({inputs: {name, email, phone, date}}) => {
     </div>
   );
 };
+
+// default export
 export default SummaryInfo;

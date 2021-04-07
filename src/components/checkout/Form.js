@@ -1,56 +1,80 @@
+// import node_modules
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
-import FormItem from './FormItem';
 import { BeatLoader } from 'react-spinners';
-import Alert from './Alert';
 import { Redirect } from 'react-router-dom';
 import moment from 'moment';
-
-// ! Import for Context/reducer
+// import local scripts
+import FormItem from './FormItem';
+import Alert from './Alert';
+// Import for Context/reducer
 import { Store } from '../hoc/Store';
-import { useGetCart, addToCart, saveLocal } from '../hoc/cart.actions';
+import { useGetCart, saveLocal } from '../hoc/cart.actions';
 
+/**
+ * This function returns the jsx of the Form section
+ * @returns Form component jsx
+ */
 const Form = () => {
-  // ! Gain access to Context/Reducer
+  // Gain access to Context/Reducer
   const { state, dispatch } = useContext(Store);
 
+  // states
   const [errorMsg, setErrorMsg] = useState('');
   const [orderSummary, setOrderSummary] = useState({});
   const [inputs, setInputs] = useState({});
   const [cartItems, setCartItems] = useState();
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [buttonText, setButtonText] = useState("Pay in Store");
+  const [buttonText, setButtonText] = useState('Pay in Store');
+
+  // references
   const submitBtn = useRef();
 
+  // rerender when cartItems or state changes
   useEffect(() => {
+    // cartItems !== null
     if (cartItems) {
+      // length of arrays are not 0
+      // also checks if the cartItems and state arrays have the same values
       if (state.length === cartItems.length && state.length !== 0) {
+        // accumulator
         let total = 0;
+
+        // loop through all items getting item and index
         state.forEach((item, index) => {
+          // check if discount should be applied
           if (cartItems[index].is_discount) {
             total += cartItems[index].discount_price * item.quantity;
           } else {
             total += cartItems[index].original_price * item.quantity;
           }
         });
+
+        // calculate gst
         const gst = total * 0.05;
+
+        // calculate final total
         const finalTotal = total + gst;
+        // set summary values with 2 significant digits
         setOrderSummary({
           total: ((total * 100) / 100).toFixed(2),
           gst: ((gst * 100) / 100).toFixed(2),
           finalTotal: ((finalTotal * 100) / 100).toFixed(2),
         });
       } else if (state.length === 0) {
+        // if there is nothing inside the cart
         setOrderSummary({
           total: 0.0,
           gst: 0.0,
           finalTotal: 0.0,
         });
       }
-
+      // set loading false
       setLoading(false);
     }
+
+    // disable pressing enter triggers
     window.addEventListener(
       'keydown',
       e => {
@@ -73,27 +97,40 @@ const Form = () => {
       true,
     );
   }, [cartItems, state]);
+
   // Get item data from cart
   let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
   state.forEach(({ id }) => {
     url += `id=${id}&`;
   });
-  // ! Grabs cart item info from API of items in state
+
+  // Grabs cart item info from API of items in state
   useGetCart(state, url, setCartItems);
 
+  // handles change in the input and updates
   const handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
     setInputs({ ...inputs, [name]: value });
   };
 
+  // handles submit and validates inputs
   const handleSubmit = e => {
     e.preventDefault();
+
+    // intially no error
     let hasError = false;
+
+    // grabs inputs and saves to local constants
     const { name, email, confirmEmail, phone } = inputs;
+
+    // input validation using regular expressions
+    // Check if full name is entered
     if (!/^([\w]{3,})+\s+([\w\s]{3,})+$/i.test(name)) {
       setErrorMsg('Error: Please Enter Your Full Name');
       hasError = true;
+
+      // Checks if a valid email is entered
     } else if (
       !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email.toLowerCase(),
@@ -101,24 +138,36 @@ const Form = () => {
     ) {
       setErrorMsg('Error: Please Enter A Valid Email');
       hasError = true;
+
+      // Checks if email and confirmEmail match
     } else if (email.toLowerCase() !== confirmEmail.toLowerCase()) {
       setErrorMsg('Error: Emails Do Not Match');
       hasError = true;
+
+      // Checks if a phone number following the format is added
     } else if (!/^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/.test(phone)) {
       setErrorMsg('Error: Phone Number Format (403-123-4567)');
       hasError = true;
+
+      // Checks if the cart is empty
     } else if (state.length === 0) {
       setErrorMsg('Error: Add Items to Order');
       hasError = true;
     } else {
+      // no error
       hasError = false;
     }
 
+    // Scrolls to top if there is an error
     if (hasError) {
       window.scrollTo(0, 0);
     } else {
-    setButtonText("Processing...");
-      submitBtn.current.setAttribute("disabled", "disabled");
+      // inputs are valid
+      // diable button while order is being processed
+      setButtonText('Processing...');
+      submitBtn.current.setAttribute('disabled', 'disabled');
+
+      // calls submit function
       submitForm({
         name,
         email: email.toLowerCase(),
@@ -128,6 +177,7 @@ const Form = () => {
     }
   };
 
+  // Takes inputs and cart items and sends a post request to API
   const submitForm = ({ name, email, confirmEmail, phone }) => {
     const config = {
       headers: {
@@ -135,6 +185,7 @@ const Form = () => {
       },
     };
 
+    // convert object to JSON
     const body = JSON.stringify({
       name,
       email,
@@ -143,6 +194,7 @@ const Form = () => {
       orderItem: state,
     });
 
+    // post request promises
     axios
       .post(
         `https://hha-capstone.herokuapp.com/api/customer/order`,
@@ -150,6 +202,7 @@ const Form = () => {
         config,
       )
       .then(res => {
+        // calls saveLocal function
         saveLocal({
           hhaSummary: {
             cartItems: [...cartItems],
@@ -158,14 +211,18 @@ const Form = () => {
             orderSummary: { ...orderSummary },
           },
         });
+        // set success true
         setIsSuccess(true);
       })
       .catch(err => {
+        // Creates an Error alert
         setErrorMsg('Error: Pay In Store Error. Please try again later!');
       });
   };
+  // redirects to the order summary if success = true
   if (isSuccess) return <Redirect to="/checkout/summary" />;
 
+  // jsx
   return (
     <form
       id="email-form"
@@ -305,4 +362,5 @@ const Form = () => {
   );
 };
 
+// default export
 export default Form;

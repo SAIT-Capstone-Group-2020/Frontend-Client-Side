@@ -5,7 +5,10 @@ import useScript from '../utils/useScript.hook';
 import Footer from '../components/hoc/Footer';
 import Form from '../components/checkout/Form';
 
-// CheckoutForm Page Component
+/**
+ * This function returns the jsx for the /checkout endpoint
+ * @returns CheckoutForm Page container jsx
+ */
 const CheckoutForm = () => {
   // calls useSript hook
   useScript(
@@ -14,6 +17,7 @@ const CheckoutForm = () => {
   useScript(
     'https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js',
   );
+  // jsx
   return (
     <div>
       <Form />

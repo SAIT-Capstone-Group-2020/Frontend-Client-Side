@@ -9,7 +9,10 @@ import Featured from '../components/index/Featured';
 import Footer from '../components/hoc/Footer';
 import WhatsNew from '../components/index/WhatsNew';
 
-// Home Page Component
+/**
+ * This function returns the jsx for the / endpoint
+ * @returns Home Page container jsx
+ */
 const Home = () => {
   // call useScript Hook
   useScript(
@@ -18,6 +21,7 @@ const Home = () => {
   useScript(
     'https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js',
   );
+  // jsx
   return (
     <div>
       <Navbar />

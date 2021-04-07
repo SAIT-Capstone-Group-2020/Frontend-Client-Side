@@ -1,7 +1,12 @@
 // import node_modules
 import { useState, useEffect } from 'react';
 
-// This function gets data from an API endpoint and sets the state data
+/**
+ * This function gets data from an API endpoint and sets the state data.
+ * @param url of JSON API
+ * @param setData useState setter reference
+ * @returns loading and error states
+ */
 const useFetch = (url, setData) => {
   // error state
   const [error, setError] = useState(null);
