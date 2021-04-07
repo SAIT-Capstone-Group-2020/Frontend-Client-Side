@@ -1,6 +1,12 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Summary Order in the Summary Component
+ * @param param0 Passed from the Summary
+ * @returns SummaryOrder component jsx
+ */
 const SummaryOrder = ({orderSummary}) => {
+  // jsx
   return (
     <div className="order-summary-wrapper order-confirm-summary">
       <div className="order-summary-wrap order-confirm-wrap">
@@ -21,4 +27,6 @@ const SummaryOrder = ({orderSummary}) => {
     </div>
   );
 };
+
+// export default
 export default SummaryOrder;
