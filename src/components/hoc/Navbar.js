@@ -15,7 +15,8 @@ const Navbar = () => {
 
 	const handleProductsLink = (e) => {
 		localStorage.setItem('sortInput', 'asc');
-		localStorage.setItem('categoryInput', 'meat');
+    localStorage.setItem('categoryInput', 'meat');
+    document.location.reload();
 	};
 
 	return (
