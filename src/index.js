@@ -1,20 +1,22 @@
+// import node_modules
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
+// import local scripts
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { StoreProvider } from './components/hoc/Store';
+// css
+import './index.css';
 
-// ! Replace Provider with storeProvider later
-
+// Replace the div with the id=root with web app
 ReactDOM.render(
   <React.StrictMode>
-  <StoreProvider>
+    <StoreProvider>
       <Router forceRefresh basename="/#">
-          <App />
+        <App />
       </Router>
-  </StoreProvider>
+    </StoreProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -1,8 +1,15 @@
+// import node_modules
 import React from 'react';
+// import local scripts
 import Slide from './Slide';
 import Slider from './Slider';
 
+/**
+ * This function returns the jsx of the MainBanner slide show and overlay
+ * @returns MainBanner component jsx
+ */
 const MainBanner = () => {
+  // jsx
   return (
     <div className="section cc-store-home-wrap">
       <div className="banners-without-event">
@@ -12,7 +19,8 @@ const MainBanner = () => {
               hiep hoa asian food market
             </h1>
             <h2 className="slider-header slider-h2">
-              We are an Asian Food Market which you can find a tons of special items with reasonable prices.
+              We are an Asian Food Market which you can find a tons of special
+              items with reasonable prices.
             </h2>
           </div>
           <div className="slider-wrap featured-wrap w-slider-mask">
@@ -36,4 +44,5 @@ const MainBanner = () => {
   );
 };
 
+// default export
 export default MainBanner;

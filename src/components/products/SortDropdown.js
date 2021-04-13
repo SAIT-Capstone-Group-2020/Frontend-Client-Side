@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
 const SortDropdown = () => {
 	const handleSortClick = (e) => {
@@ -22,19 +21,6 @@ const SortDropdown = () => {
 						<div className="product-list-filter-name">Choose Sort By</div>
 					</div>
 					<nav className="product-filter-dropdown-list w-dropdown-list">
-						{/* <a href="#" className="product-list-filter-option w-dropdown-link">Sort by latest</a> */}
-						{/* <Link
-							to={{ pathname: '/products', state: { sort: 'asc' } }}
-							className="product-list-filter-option w-dropdown-link"
-						>
-							Sort by price: low to high
-						</Link>
-						<Link
-							to={{ pathname: '/products', state: { sort: 'desc' } }}
-							className="product-list-filter-option w-dropdown-link"
-						>
-							Sort by price: high to low
-						</Link> */}
 						<a
 							href="/#/products"
 							onClick={handleSortClick}

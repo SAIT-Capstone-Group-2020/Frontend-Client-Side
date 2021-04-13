@@ -1,19 +1,32 @@
+// import node_modules
 import React, { useEffect, useState } from 'react';
-import useFetch from '../../utils/useFetch.hook';
 import { BeatLoader } from 'react-spinners';
+// import local scripts
+import useFetch from '../../utils/useFetch.hook';
 
+/**
+ * This function returns the jsx of the Weekly Sale Section
+ * @returns WeeklySale component jsx
+ */
 const WeeklySale = () => {
+  // states
   const [saleImage, setSaleImage] = useState();
   const [loading, setLoading] = useState(true);
+  // rerender when saleImage changes
   useEffect(() => {
+    // if saleImage !== null
     if (saleImage) {
+      // change loading to false to remove loader animation
       setLoading(false);
     }
   }, [saleImage]);
+
+  // call useFetch hook to get data from API
   useFetch(
-    'https://hha-merge.herokuapp.com/api/v2/ui/allbanner_tf2',
+    'https://hha-capstone.herokuapp.com/api/v2/ui/allbanner',
     setSaleImage,
   );
+  // jsx
   return (
     <div className="weekly-sale-wrapper">
       <div className="container main-page-header-container">
@@ -41,4 +54,5 @@ const WeeklySale = () => {
   );
 };
 
+// default export
 export default WeeklySale;

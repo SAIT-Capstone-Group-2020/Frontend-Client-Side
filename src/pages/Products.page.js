@@ -11,28 +11,8 @@ import Footer from '../components/hoc/Footer';
 function Products() {
 	const [ products, setProducts ] = useState([]);
 	const [ searchValue, setSearchValue ] = useState('');
-	const [ loading, setLoading ] = useState(false);
-	// let location = useLocation();
-
-	// since the initial load is undefined, reload and it shoud show up
-	// if(!location.state) {
-    // document.location.reload();
-	// }
+	const [loading, setLoading] = useState(false);
 	
-	// if (location.state.sort) {
-	// 	localStorage.setItem('sortInput', location.state.sort);
-	// }
-
-	// if (location.state.category) {
-	// 	localStorage.setItem('categoryInput', location.state.category);
-	// }
-
-	// localStorage.setItem('sortInput', localStorage.getItem('sortInput'));
-
-	// localStorage.setItem('categoryInput', localStorage.getItem(
-	// 				'categoryInput'
-	// 			));
-
 	useEffect(() => {
 		setLoading(true);
 		axios
