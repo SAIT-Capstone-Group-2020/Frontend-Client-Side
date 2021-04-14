@@ -1,15 +1,26 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Product List page's Header Section
+ * @param searchHandler Passed from Product List Page
+ * @returns Product List Page Header component jsx
+ */
 const ProductsHeader = ({ searchHandler }) => {
+	// handle search input
 	const handleSearchInputChange = (e) => {
+		// get user search input
 		searchHandler(e.target.value);
 	};
 
+	// handle category click on mobile phone size screen
 	const handleCategoryClick = (e) => {
+		// save user category input on local storage
 		localStorage.setItem('categoryInput', e.target.innerText);
+		// page refresh after category click
 		document.location.reload();
 	};
 
+	// jsx
 	return (
 		<div className="product-list-header-section cc-product-list-heading-section">
 			<div className="product-list-header-container cc-heading-wrap">
@@ -102,4 +113,5 @@ const ProductsHeader = ({ searchHandler }) => {
 	);
 };
 
+// default export
 export default ProductsHeader;

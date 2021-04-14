@@ -1,11 +1,19 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Category Sidebar Section
+ * @returns Category sidebar component jsx
+ */
 const CategorySidebar = () => {
+	// handle categoy click on computer size screen
 	const handleCategoryClick = (e) => {
+		// save user category input on local storage
 		localStorage.setItem('categoryInput', e.target.innerText);
+		// page refresh after category click
 		document.location.reload();
 	};
 
+	// jsx
 	return (
 		<div className="store-heading-categories-wrap">
 			<div className="category-link-list-wrapper">
@@ -59,4 +67,5 @@ const CategorySidebar = () => {
 	);
 };
 
+// default export
 export default CategorySidebar;
