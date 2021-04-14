@@ -1,15 +1,26 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Product List page's Header Section
+ * @param searchHandler Passed from Product List Page
+ * @returns Product List Page Header component jsx
+ */
 const ProductsHeader = ({ searchHandler }) => {
+	// handle search input
 	const handleSearchInputChange = (e) => {
+		// get user search input
 		searchHandler(e.target.value);
 	};
 
+	// handle category click on mobile phone size screen
 	const handleCategoryClick = (e) => {
+		// save user category input on local storage
 		localStorage.setItem('categoryInput', e.target.innerText);
+		// page refresh after category click
 		document.location.reload();
 	};
 
+	// jsx
 	return (
 		<div className="product-list-header-section cc-product-list-heading-section">
 			<div className="product-list-header-container cc-heading-wrap">
@@ -31,13 +42,7 @@ const ProductsHeader = ({ searchHandler }) => {
 				<div className="store-heading-categories-wrap cc-heading-category">
 					<div className="category-link-list-wrapper cc-heading-category">
 						<div className="category-link-list-wrap cc-category-list cc-heading-category">
-							{/* <div className="category-link-wrapper cc-heading-category">
-              <a href="/#/products" aria-current="page" className="category-link cc-heading-category w--current">All Products</a>
-            </div> */}
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'meat'} }} className="category-link cc-heading-category">
-                  meat
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -47,9 +52,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'fruit'} }} className="category-link cc-heading-category">
-							fruit &amp; vegetables
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -59,9 +61,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'seafood'} }} className="category-link cc-heading-category">
-							seafood
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -71,9 +70,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'frozen'} }} className="category-link cc-heading-category">
-							dairy &amp; frozen
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -83,9 +79,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'snack'} }} className="category-link cc-heading-category">
-							snacks
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -95,12 +88,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link
-							to={{ pathname: '/products', state: { category: 'food essentials'} }}
-							className="category-link cc-heading-category"
-						>
-							food essentials
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -110,9 +97,6 @@ const ProductsHeader = ({ searchHandler }) => {
 								</a>
 							</div>
 							<div className="category-link-wrapper cc-heading-category">
-								{/* <Link to={{ pathname: '/products', state: { category: 'beauty'} }} className="category-link cc-heading-category">
-							beauty &amp; household
-						</Link> */}
 								<a
 									href="/#/products"
 									onClick={handleCategoryClick}
@@ -129,4 +113,5 @@ const ProductsHeader = ({ searchHandler }) => {
 	);
 };
 
+// default export
 export default ProductsHeader;

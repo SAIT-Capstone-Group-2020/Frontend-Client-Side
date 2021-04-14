@@ -25,7 +25,7 @@ const Navbar = () => {
   // handle click action when products is clicked
   const handleProductsLink = e => {
     localStorage.setItem('sortInput', 'asc');
-    localStorage.setItem('categoryInput', 'meat');
+	  localStorage.setItem('categoryInput', 'meat');
   };
 
   // jsx

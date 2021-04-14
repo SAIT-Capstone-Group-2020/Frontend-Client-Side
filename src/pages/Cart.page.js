@@ -125,25 +125,9 @@ const Cart = ({handleCartButton}) => {
 										>
 											Continue to Checkout
 										</a>
-										{/* <div className="checkout-actions">
-												<div
-													className="cart-payment-buttons"
-												>
-													<a
-														href="#"
-														value="Continue to Checkout"
-														className="w-commerce-commercecartcheckoutbutton button cc-cart-button"
-													>
-														Continue to Checkout
-													</a>
-												</div>
-											</div> */}
 									</div>
 								</div>
 							</form>
-							{/* <div className="w-commerce-commercecartemptystate cart-empty-state">
-										<div className="paragraph-light">No products in the cart.</div>
-									</div> */}
 						</div>
 					</div>
 				</div>

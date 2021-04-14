@@ -1,8 +1,13 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 
+/**
+ * This function returns the jsx of the Price Sort Dropdown Section of Product List Page
+ * @returns Price sort dropdown component jsx
+ */
 const SortDropdown = () => {
+	// handle sort dropdown click
 	const handleSortClick = (e) => {
+		// save user sort input on local storage
 		if (e.target.innerText == 'Sort by price: low to high') {
 			localStorage.setItem('sortInput', 'asc');
 		}
@@ -10,9 +15,11 @@ const SortDropdown = () => {
 			localStorage.setItem('sortInput', 'desc');
 		}
 
+		// page refresh after price sort dropdown click
 		document.location.reload();
 	};
 
+	// jsx
 	return (
 		<div className="product-list-filter-wrap">
 			<div className="product-list-filter w-clearfix">
@@ -22,19 +29,6 @@ const SortDropdown = () => {
 						<div className="product-list-filter-name">Choose Sort By</div>
 					</div>
 					<nav className="product-filter-dropdown-list w-dropdown-list">
-						{/* <a href="#" className="product-list-filter-option w-dropdown-link">Sort by latest</a> */}
-						{/* <Link
-							to={{ pathname: '/products', state: { sort: 'asc' } }}
-							className="product-list-filter-option w-dropdown-link"
-						>
-							Sort by price: low to high
-						</Link>
-						<Link
-							to={{ pathname: '/products', state: { sort: 'desc' } }}
-							className="product-list-filter-option w-dropdown-link"
-						>
-							Sort by price: high to low
-						</Link> */}
 						<a
 							href="/#/products"
 							onClick={handleSortClick}
@@ -56,6 +50,5 @@ const SortDropdown = () => {
 	);
 };
 
-SortDropdown.propTypes = {};
-
+// default export
 export default SortDropdown;

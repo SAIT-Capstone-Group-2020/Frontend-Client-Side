@@ -22,7 +22,7 @@ const Detail = () => {
     // id needs to be saved as an int
     const id = parseInt(productId);
     // check if id !== null and is a number. Don't want to add an invalid product id to cart
-    if(id && typeof id === 'number') {
+    if (id && typeof id === 'number') {
       addToCart(id, input, dispatch);
     }
   };
@@ -72,11 +72,6 @@ const Detail = () => {
                 min={1} value={input}
                 onChange={handleQuantityInputChange}/><input type="submit" value="Add To Cart" className="w-commerce-commerceaddtocartbutton button cc-product-detail-cart-button"/></div>
         </form>
-        {/* <div style={{"display":"none"}} className="w-commerce-commerceaddtocartoutofstock status-message">
-          <div>This product is out of stock.</div>
-        </div> */}
-        {/* <div data-node-type="commerce-add-to-cart-error" style="display:none" className="w-commerce-commerceaddtocarterror error-state">
-        </div> */}
       </div>
     </div>
   </div>
