@@ -5,7 +5,7 @@ import React from 'react';
  * @returns Category sidebar component jsx
  */
 const CategorySidebar = () => {
-	// handle categoy click on computer size screen
+	// handle category click on computer size screen
 	const handleCategoryClick = (e) => {
 		// save user category input on local storage
 		localStorage.setItem('categoryInput', e.target.innerText);

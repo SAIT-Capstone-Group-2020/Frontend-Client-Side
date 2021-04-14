@@ -1,7 +1,13 @@
 import React from 'react';
 
+/**
+ * This function returns the jsx of the Price Sort Dropdown Section of Product List Page
+ * @returns Price sort dropdown component jsx
+ */
 const SortDropdown = () => {
+	// handle sort dropdown click
 	const handleSortClick = (e) => {
+		// save user sort input on local storage
 		if (e.target.innerText == 'Sort by price: low to high') {
 			localStorage.setItem('sortInput', 'asc');
 		}
@@ -9,9 +15,11 @@ const SortDropdown = () => {
 			localStorage.setItem('sortInput', 'desc');
 		}
 
+		// page refresh after price sort dropdown click
 		document.location.reload();
 	};
 
+	// jsx
 	return (
 		<div className="product-list-filter-wrap">
 			<div className="product-list-filter w-clearfix">
@@ -42,6 +50,5 @@ const SortDropdown = () => {
 	);
 };
 
-SortDropdown.propTypes = {};
-
+// default export
 export default SortDropdown;
