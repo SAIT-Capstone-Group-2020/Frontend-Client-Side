@@ -1,11 +1,21 @@
+// import node modules
 import React, { useState } from 'react';
-import Navbar from '../components/hoc/Navbar';
+// import local scripts
 import useScript from '../utils/useScript.hook';
+import Navbar from '../components/hoc/Navbar';
 import Footer from '../components/hoc/Footer';
+// import Google Map modules
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 
+/**
+ * This function returns the jsx of Google map components
+ * @returns Google map components such as marker and info window
+ */
 function Map() {
+	// state
 	const [ selected, setSelected ] = useState(false);
+
+	// jsx for Google map components
 	return (
 		<GoogleMap defaultZoom={18} defaultCenter={{ lat: 51.03895, lng: -113.966949 }}>
 			<Marker
@@ -34,21 +44,28 @@ function Map() {
 	);
 }
 
+// wrap Google map components in one
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
+/**
+ * This function returns the jsx for the /about endpoint
+ * @returns About Page container jsx
+ */
 const About = () => {
+	// call useScript hook
 	useScript('https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff6189ef3859a509a1e9dfe');
 	useScript('https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js');
 	useScript('https://res.cloudinary.com/hntzzmpn9/raw/upload/v1612562182/hha/webflow_slud7c.js');
 
+	// jsx
 	return (
 		<div>
 			<Navbar />
 			<div>
 				<div className="section cc-about-section">
 					<div className="intro-header" />
-					<div className="intro-content" >
-						<div className="intro-text" >
+					<div className="intro-content">
+						<div className="intro-text">
 							<div className="head-jumbo cc-intro-head-jumbo">
 								About Us<br />
 							</div>
@@ -163,4 +180,5 @@ const About = () => {
 	);
 };
 
+// default export
 export default About;
