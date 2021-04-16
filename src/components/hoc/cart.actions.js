@@ -60,29 +60,44 @@ export const clearCart = dispatch => {
 
 // This function is the basic version of adding an item to the cart.
 export const addToCart = (id, quantity, dispatch) => {
+  const newId = parseValue(id);
+  const newQty = parseValue(quantity);
+
   dispatch({
     type: ADD_TO_CART,
-    payload: { id, quantity },
+    payload: { id: newId, quantity: newQty },
   });
 };
 
 // This function removes an item from the cart
 export const removeFromCart = (id, dispatch) => {
+  const newId = parseValue(id);
   dispatch({
     type: REMOVE_FROM_CART,
-    payload: id,
+    payload: newId,
   });
 };
 
 // This function updates the quantity of an item
 export const updateQuatity = (id, quantity, dispatch) => {
+  const newId = parseValue(id);
+  const newQty = parseValue(quantity);
   dispatch({
     type: UPDATE_QUANTITY,
-    payload: { id, quantity },
+    payload: { id: newId, quantity: newQty },
   });
 };
 
 // This function saves the summary info to local storage
 export const saveLocal = ({ hhaSummary }) => {
   localStorage.setItem('hhaSummary', JSON.stringify(hhaSummary));
+};
+
+// check if value is int
+const parseValue = value => {
+  let val = value;
+  if (typeof value === 'string') {
+    val = parseInt(value);
+  }
+  return val
 };
