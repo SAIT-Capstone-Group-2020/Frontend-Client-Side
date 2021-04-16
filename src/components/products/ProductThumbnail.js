@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 
+/**
+ * This class renders the jsx of the Product Thumbnail on the product list page
+ */
 class ProductThumbnail extends Component {
+	// state
 	state = {
 		loading : true,
 		productList : [],
 	};
 
+	// call backend api to get all products info
 	async componentDidMount() {
 		const response = await fetch('https://capstone-hha.herokuapp.com/api/customer/product');
 		const allProductData = await response.json();
 		this.setState({ productList: allProductData, loading: false });
 	}
 
+	// jsx
 	render() {
 		return (
 			<>
@@ -44,4 +50,5 @@ class ProductThumbnail extends Component {
 	}
 }
 
+// default export
 export default ProductThumbnail;
