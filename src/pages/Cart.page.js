@@ -1,4 +1,6 @@
+// import node modules
 import React, { useState, useEffect, useContext } from 'react';
+// import local scripts
 import useScript from '../utils/useScript.hook';
 import { Store } from '../components/hoc/Store';
 import { BeatLoader } from 'react-spinners';
@@ -7,17 +9,25 @@ import { removeFromCart, updateQuatity } from '../components/hoc/cart.actions';
 import CartItem from '../components/hoc/CartItem';
 import FormItem from '../components/checkout/FormItem';
 
-const Cart = ({handleCartButton}) => {
+/**
+ * This function returns the jsx for the /cart endpoint
+ * @param handleCartButton Passed from Product Detail Page
+ * @returns Cart Page container jsx
+ */
+const Cart = ({ handleCartButton }) => {
+	// states
 	const { state, dispatch } = useContext(Store);
 	const [ inputs, setInputs ] = useState({});
 	const [ subTotal, setSubTotal ] = useState((0).toFixed(2));
 	const [ cartItems, setCartItems ] = useState();
 	const [ loading, setLoading ] = useState(true);
 
+	// call useScript hook
 	useScript('https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5ff6189ef3859a509a1e9dfe');
 	useScript('https://res.cloudinary.com/hsse18xji/raw/upload/v1612153620/HHA/js/webflow_vdcwdg.js');
 	useScript('https://res.cloudinary.com/hntzzmpn9/raw/upload/v1612562182/hha/webflow_slud7c.js');
 
+	// call useEffect hook to handle cart items and subtotal price
 	useEffect(
 		() => {
 			if (cartItems) {
@@ -39,14 +49,17 @@ const Cart = ({handleCartButton}) => {
 		},
 		[ cartItems, state ]
 	);
-	// Get item data from cart
+
+	// get item data from cart
 	let url = 'https://hha-capstone.herokuapp.com/api/customer/order?';
 	state.forEach(({ id }) => {
 		url += `id=${id}&`;
 	});
-	// ! Grabs cart item info from API of items in state
+
+	// grab cart item info from API of items in state
 	useGetCart(state, url, setCartItems);
 
+	// jsx
 	return (
 		<div>
 			<div data-open-product="" data-wf-cart-type="rightSidebar" className="w-commerce-commercecartwrapper cart">
@@ -55,8 +68,17 @@ const Cart = ({handleCartButton}) => {
 					<div className="w-commerce-commercecartcontainer cart-container">
 						<div className="w-commerce-commercecartheader cart-header">
 							<h4 className="head-jumbo-tiny">your cart</h4>
-							<a onClick={handleCartButton} href="#" className="w-commerce-commercecartcloselink close-button w-inline-block">
-								<img src="https://res.cloudinary.com/hsse18xji/image/upload/v1612155757/HHA/images/close-icon_lsdnor.svg" width="16" alt="" className="icon" />
+							<a
+								onClick={handleCartButton}
+								href="#"
+								className="w-commerce-commercecartcloselink close-button w-inline-block"
+							>
+								<img
+									src="https://res.cloudinary.com/hsse18xji/image/upload/v1612155757/HHA/images/close-icon_lsdnor.svg"
+									width="16"
+									alt=""
+									className="icon"
+								/>
 							</a>
 						</div>
 						<div className="w-commerce-commercecartformwrapper cart-form-wrapper">
@@ -136,4 +158,5 @@ const Cart = ({handleCartButton}) => {
 	);
 };
 
+// default export
 export default Cart;
