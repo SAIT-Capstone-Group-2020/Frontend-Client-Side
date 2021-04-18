@@ -1,25 +1,30 @@
+// import node modules
 import React, { useState } from 'react';
+// import local scripts
 import { removeFromCart, updateQuatity } from './cart.actions';
 
+/**
+ * This function returns the jsx of the Cart Item section
+ * @returns Cart item component jsx
+ */
 const CartItem = (id, itemName, weight, weightType, qty, price, image, dispatch, isDiscount, ogPrice) => {
-
+	// states
 	const [ input, setInput ] = useState(qty);
-	const handleRemove = e => {
+	const handleRemove = (e) => {
 		e.preventDefault();
 		removeFromCart(id, dispatch);
 	};
 
-	const handleInput = e => {
+	// handle quantity input
+	const handleInput = (e) => {
 		e.preventDefault();
 		if (e.keyCode === 13) {
 			return false;
 		}
 		setInput(e.target.value);
-		// if (isDiscount) {
-		// 	setItemOgPrice((Math.round(ogPrice * e.target.value * 100) / 100).toFixed(2));
-		// }
 	};
 
+	// jsx
 	return (
 		<div>
 			<div className="test-cart-item">
@@ -62,4 +67,5 @@ const CartItem = (id, itemName, weight, weightType, qty, price, image, dispatch,
 	);
 };
 
+// default export
 export default CartItem;
