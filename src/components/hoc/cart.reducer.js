@@ -55,25 +55,24 @@ const cartReducer = (state = ini_state, { type, payload }) => {
 			localStorage.setItem('hhaCart', JSON.stringify(updateCart));
 			return updateCart;
 		case ADD_TO_CART:
-			let secondAddCart = [...state];
-			state.forEach((item) => {
-        if (item.id === payload.id) {
-					secondAddCart.push({
-						id       : payload.id,
-						quantity : payload.quantity
-					});
-
-					localStorage.setItem('hhaCart', JSON.stringify(secondAddCart));
-					return secondAddCart;
+			let addCart = [...state];
+			let isInCart = false;
+			addCart.forEach((item) => {
+        	if (item.id === payload.id) {
+					item.quantity += payload.quantity
+					isInCart = true;
+					return;
 				}
 			});
-			const addCart = [
+			if(!isInCart) {
+				addCart = [
 				...state,
 				{
 					id       : payload.id,
 					quantity : payload.quantity
 				}
 			];
+			}
 			localStorage.setItem('hhaCart', JSON.stringify(addCart));
 			return addCart;
 		default:

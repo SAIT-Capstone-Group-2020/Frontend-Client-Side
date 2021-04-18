@@ -24,7 +24,7 @@ const Cart = ({handleCartButton}) => {
 				if (state.length === cartItems.length && state.length !== 0) {
 					let total = 0;
 					state.forEach((item, index) => {
-						if (cartItems[index].is_discount) {
+						if (cartItems[index] && cartItems[index].is_discount) {
 							total += cartItems[index].discount_price * item.quantity;
 						}
 						else {
